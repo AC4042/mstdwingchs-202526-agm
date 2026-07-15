@@ -12,193 +12,208 @@
   --accent:#e8a020;--green:#27ae60;--red:#c0392b;--slate:#475569;
   --white:#fff;--light:#f0f4fa;--dark-card:#1e3a6e;
 }
-body{font-family:'Segoe UI',Arial,sans-serif;background:#eef2f8;color:var(--navy);min-height:100vh}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#eef2f8;color:var(--navy);min-height:100vh;font-size:15px;line-height:1.5}
 h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* ── NAV ── */
 .topnav{background:var(--navy);padding:0;display:flex;flex-direction:column;position:sticky;top:0;z-index:200}
-.nav-row1{display:flex;align-items:center;justify-content:space-between;padding:8px 18px;gap:10px}
-.brand{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:3px;white-space:nowrap}
-.nav-arrows{display:flex;align-items:center;gap:8px}
-.arr-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 14px;border-radius:5px;cursor:pointer;font-size:12px;transition:background .15s}
+.nav-row1{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;gap:12px}
+.brand{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:3px;white-space:nowrap}
+.nav-arrows{display:flex;align-items:center;gap:10px}
+.arr-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;padding:7px 18px;border-radius:5px;cursor:pointer;font-size:14px;transition:background .15s}
 .arr-btn:hover{background:rgba(255,255,255,.2)}
-.slide-counter{color:#6688aa;font-size:11px;min-width:50px;text-align:center}
-.nav-row2{display:flex;overflow-x:auto;padding:0 12px 8px;gap:4px;scrollbar-width:none}
-.nav-row2::-webkit-scrollbar{display:none}
-.snav{background:none;border:1px solid rgba(255,255,255,.2);color:#aaccee;padding:4px 9px;border-radius:4px;cursor:pointer;font-size:10px;font-weight:600;white-space:nowrap;transition:all .15s}
-.snav:hover,.snav.active{background:var(--accent);color:var(--navy);border-color:var(--accent)}
+.slide-counter{color:#6688aa;font-size:13px;min-width:60px;text-align:center;font-weight:600}
+/* ── SCROLLABLE NAV ROW ── */
+.nav-row2{display:flex;overflow-x:auto;padding:6px 14px 10px;gap:6px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.2) transparent;align-items:center}
+.nav-row2::-webkit-scrollbar{height:4px}
+.nav-row2::-webkit-scrollbar-track{background:transparent}
+.nav-row2::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:4px}
+.snav{background:none;border:1px solid rgba(255,255,255,.25);color:#cce0f5;padding:6px 13px;border-radius:5px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;transition:all .15s;line-height:1.3}
+.snav:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.4);color:#fff}
+.snav.active{background:var(--accent);color:var(--navy);border-color:var(--accent);font-weight:700}
 
 /* ── SLIDES ── */
-.slide-wrap{padding:14px 16px}
+.slide-wrap{padding:16px 18px}
 .slide{display:none;border-radius:14px;overflow:hidden;animation:fadeUp .3s ease}
 .slide.on{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.topbar{background:var(--blue);padding:7px 20px;display:flex;justify-content:space-between}
-.topbar span{color:#fff;font-size:9px;font-weight:700;letter-spacing:2px}
-.topbar small{color:#aaccee;font-size:8px}
-.sbody{padding:24px 24px 20px;background:var(--light)}
-.sbody-dark{padding:24px 24px 20px;background:var(--navy)}
-.stitle{font-size:17px;font-weight:700;color:var(--navy);letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--accent)}
-.stitle-w{font-size:17px;font-weight:700;color:var(--accent);letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid rgba(232,160,32,.4)}
+.topbar{background:var(--blue);padding:8px 22px;display:flex;justify-content:space-between;align-items:center}
+.topbar span{color:#fff;font-size:11px;font-weight:700;letter-spacing:2px}
+.topbar small{color:#aaccee;font-size:10px}
+.sbody{padding:26px 26px 22px;background:var(--light)}
+.sbody-dark{padding:26px 26px 22px;background:var(--navy)}
+.stitle{font-size:19px;font-weight:700;color:var(--navy);letter-spacing:.8px;text-transform:uppercase;margin-bottom:20px;padding-bottom:11px;border-bottom:2px solid var(--accent)}
+.stitle-w{font-size:19px;font-weight:700;color:var(--accent);letter-spacing:.8px;text-transform:uppercase;margin-bottom:20px;padding-bottom:11px;border-bottom:2px solid rgba(232,160,32,.4)}
 
 /* ── CARDS / KPI ── */
-.kgrid{display:grid;gap:12px;margin-bottom:16px}
+.kgrid{display:grid;gap:14px;margin-bottom:18px}
 .k3{grid-template-columns:repeat(3,1fr)}
 .k4{grid-template-columns:repeat(4,1fr)}
 .k2{grid-template-columns:repeat(2,1fr)}
 .kcard{background:#fff;border-radius:10px;border:.5px solid #ccd9ee;overflow:hidden;cursor:pointer;transition:transform .15s}
 .kcard:hover{transform:translateY(-2px)}
-.ktop{height:4px}
-.kbody{padding:12px 14px}
-.kval{font-size:24px;font-weight:700;margin-bottom:2px}
-.klbl{font-size:9px;color:var(--slate);font-weight:700;letter-spacing:.5px;text-transform:uppercase}
-.ksub{font-size:9px;color:#7a8aaa;margin-top:4px}
-.khint{font-size:9px;color:var(--mid);margin-top:6px;font-weight:600}
+.ktop{height:5px}
+.kbody{padding:14px 16px}
+.kval{font-size:26px;font-weight:700;margin-bottom:3px}
+.klbl{font-size:11px;color:var(--slate);font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.ksub{font-size:11px;color:#7a8aaa;margin-top:5px}
+.khint{font-size:11px;color:var(--mid);margin-top:7px;font-weight:600}
 
 /* ── STEP / ROW CARDS ── */
-.srow{display:flex;background:#fff;border-radius:8px;border:.5px solid #ccd9ee;overflow:hidden;margin-bottom:9px;cursor:pointer;transition:transform .15s}
+.srow{display:flex;background:#fff;border-radius:8px;border:.5px solid #ccd9ee;overflow:hidden;margin-bottom:10px;cursor:pointer;transition:transform .15s}
 .srow:hover{transform:translateX(3px)}
-.snum{width:46px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0}
-.srbody{padding:10px 14px}
-.srtitle{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:2px}
-.srdesc{font-size:10px;color:var(--slate)}
+.snum{width:50px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;flex-shrink:0}
+.srbody{padding:12px 16px}
+.srtitle{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.srdesc{font-size:12px;color:var(--slate);line-height:1.5}
 
 /* ── ISSUE CARDS ── */
-.igrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.igrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .icard{background:#fff;border-radius:9px;overflow:hidden;cursor:pointer;transition:transform .15s;border:.5px solid #ccd9ee}
 .icard:hover{transform:scale(1.02)}
-.ihead{padding:10px 14px;display:flex;align-items:center;gap:8px;color:#fff;font-size:11px;font-weight:700}
-.idesc{padding:10px 14px;font-size:10px;color:var(--slate)}
+.ihead{padding:12px 16px;display:flex;align-items:center;gap:9px;color:#fff;font-size:13px;font-weight:700}
+.idesc{padding:12px 16px;font-size:12px;color:var(--slate);line-height:1.5}
 
 /* ── RESOLUTION ROWS ── */
-.rrow{display:flex;background:var(--dark-card);border:1px solid #2e5090;border-radius:8px;overflow:hidden;margin-bottom:9px;cursor:pointer;transition:border-color .15s}
+.rrow{display:flex;background:var(--dark-card);border:1px solid #2e5090;border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;transition:border-color .15s}
 .rrow:hover{border-color:var(--accent)}
-.rnum{width:52px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:10px;font-weight:700;flex-shrink:0}
-.rbody{padding:10px 14px;flex:1}
-.rtitle{font-size:12px;font-weight:700;color:#fff;margin-bottom:2px}
-.rdesc{font-size:10px;color:#aaccee}
-.rbadge{padding:10px 12px;display:flex;align-items:center;flex-shrink:0}
-.badge{padding:3px 9px;border-radius:3px;font-size:8px;font-weight:700;letter-spacing:1px}
+.rnum{width:56px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:12px;font-weight:700;flex-shrink:0}
+.rbody{padding:12px 16px;flex:1}
+.rtitle{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px}
+.rdesc{font-size:12px;color:#aaccee;line-height:1.5}
+.rbadge{padding:12px 14px;display:flex;align-items:center;flex-shrink:0}
+.badge{padding:4px 10px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:1px}
 
 /* ── PROJECT ROWS ── */
-.prow{display:flex;align-items:center;background:#fff;border-radius:8px;border:.5px solid #ccd9ee;padding:13px 16px;margin-bottom:9px;gap:12px;cursor:pointer;transition:transform .15s}
+.prow{display:flex;align-items:center;background:#fff;border-radius:8px;border:.5px solid #ccd9ee;padding:15px 18px;margin-bottom:10px;gap:14px;cursor:pointer;transition:transform .15s}
 .prow:hover{transform:translateX(3px)}
-.picon{width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.picon{width:40px;height:40px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .pinfo{flex:1;min-width:0}
-.ptitle{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:2px}
-.pdesc{font-size:10px;color:var(--slate)}
-.pbar-bg{height:5px;background:#e2e8f0;border-radius:3px;margin-top:5px}
-.pbar{height:5px;border-radius:3px}
+.ptitle{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.pdesc{font-size:12px;color:var(--slate)}
+.pbar-bg{height:6px;background:#e2e8f0;border-radius:3px;margin-top:6px}
+.pbar{height:6px;border-radius:3px}
 .pright{text-align:right;flex-shrink:0}
-.pstat{padding:3px 10px;border-radius:3px;font-size:8px;font-weight:700;color:#fff;margin-bottom:4px;display:inline-block}
-.ppct{font-size:13px;font-weight:700}
+.pstat{padding:4px 11px;border-radius:3px;font-size:10px;font-weight:700;color:#fff;margin-bottom:5px;display:inline-block}
+.ppct{font-size:15px;font-weight:700}
 
 /* ── INIT CARDS ── */
-.init-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.init-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .init-card{background:#fff;border-radius:10px;border:.5px solid #ccd9ee;overflow:hidden;cursor:pointer;transition:transform .15s}
 .init-card:hover{transform:translateY(-3px)}
-.init-top{padding:18px;display:flex;justify-content:center;align-items:center;font-size:36px}
-.init-body{padding:12px 14px}
-.init-tag{display:inline-block;padding:2px 8px;border-radius:3px;font-size:8px;font-weight:700;margin-bottom:7px}
-.init-title{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:4px}
-.init-desc{font-size:10px;color:var(--slate)}
+.init-top{padding:20px;display:flex;justify-content:center;align-items:center;font-size:40px}
+.init-body{padding:14px 16px}
+.init-tag{display:inline-block;padding:3px 9px;border-radius:3px;font-size:10px;font-weight:700;margin-bottom:8px}
+.init-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:5px}
+.init-desc{font-size:12px;color:var(--slate);line-height:1.5}
 
 /* ── POLICY DARK CARDS ── */
-.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.pcard{background:var(--dark-card);border-radius:8px;padding:14px;border:.5px solid #2e5090}
-.pcard-icon{font-size:20px;margin-bottom:6px}
-.pcard-title{color:#fff;font-size:12px;font-weight:700;margin-bottom:4px}
-.pcard-desc{color:#aaccee;font-size:10px;line-height:1.5}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.pcard{background:var(--dark-card);border-radius:8px;padding:16px;border:.5px solid #2e5090}
+.pcard-icon{font-size:22px;margin-bottom:8px}
+.pcard-title{color:#fff;font-size:14px;font-weight:700;margin-bottom:5px}
+.pcard-desc{color:#aaccee;font-size:12px;line-height:1.6}
 
 /* ── INSIGHT BOX ── */
-.insight{background:#fff3cd;border:1.5px solid var(--accent);border-radius:8px;padding:12px 16px;margin-top:14px}
-.insight-label{font-size:9px;font-weight:700;color:var(--red);letter-spacing:1px;margin-bottom:4px}
-.insight-text{font-size:11px;color:var(--navy)}
+.insight{background:#fff3cd;border:1.5px solid var(--accent);border-radius:8px;padding:14px 18px;margin-top:16px}
+.insight-label{font-size:11px;font-weight:700;color:var(--red);letter-spacing:1px;margin-bottom:5px}
+.insight-text{font-size:13px;color:var(--navy)}
 
 /* ── MODALS ── */
 .modal-host{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;overflow-y:auto;padding:40px 16px}
 .modal-host.open{display:block}
-.modal-box{background:#fff;border-radius:14px;max-width:580px;margin:0 auto;overflow:hidden}
-.modal-hdr{padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
-.modal-title{color:#fff;font-size:13px;font-weight:700;letter-spacing:.5px}
-.mcls{background:none;border:none;color:rgba(255,255,255,.7);font-size:22px;cursor:pointer;line-height:1;padding:0 4px}
+.modal-box{background:#fff;border-radius:14px;max-width:600px;margin:0 auto;overflow:hidden}
+.modal-hdr{padding:18px 22px;display:flex;justify-content:space-between;align-items:center}
+.modal-title{color:#fff;font-size:15px;font-weight:700;letter-spacing:.5px}
+.mcls{background:none;border:none;color:rgba(255,255,255,.7);font-size:24px;cursor:pointer;line-height:1;padding:0 4px}
 .mcls:hover{color:#fff}
-.modal-body{padding:20px 22px}
-.info-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:.5px solid #eee;font-size:12px}
+.modal-body{padding:22px 24px}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:.5px solid #eee;font-size:13px}
 .info-row:last-child{border-bottom:none}
 .il{color:var(--slate)}
 .iv{font-weight:700;color:var(--navy)}
-.ch-wrap{position:relative;width:100%;margin-bottom:14px}
-.mleg{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:10px;font-size:11px;color:var(--slate)}
-.mleg-dot{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:4px;vertical-align:middle}
-.alert-box{border-radius:7px;padding:10px 14px;font-size:11px;margin-top:12px}
-.snap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.snap-item{background:var(--light);border-radius:8px;padding:10px 12px;text-align:center}
-.snap-val{font-size:22px;font-weight:700;margin-bottom:2px}
-.snap-lbl{font-size:9px;color:var(--slate);text-transform:uppercase;letter-spacing:.5px}
-.quote-banner{background:var(--accent);border-radius:8px;padding:13px 18px;margin:10px 0;text-align:center}
-.quote-banner p{color:var(--navy);font-size:14px;font-weight:700;font-style:italic}
-.note-box{background:var(--light);border-radius:7px;padding:10px 14px;margin-bottom:9px}
-.note-key{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px}
-.note-desc{font-size:10px;color:var(--slate)}
+.ch-wrap{position:relative;width:100%;margin-bottom:16px}
+.mleg{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px;font-size:12px;color:var(--slate)}
+.mleg-dot{width:11px;height:11px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:middle}
+.alert-box{border-radius:7px;padding:12px 16px;font-size:12px;margin-top:14px}
+.snap-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.snap-item{background:var(--light);border-radius:8px;padding:12px 14px;text-align:center}
+.snap-val{font-size:24px;font-weight:700;margin-bottom:3px}
+.snap-lbl{font-size:11px;color:var(--slate);text-transform:uppercase;letter-spacing:.5px}
+.quote-banner{background:var(--accent);border-radius:8px;padding:15px 20px;margin:12px 0;text-align:center}
+.quote-banner p{color:var(--navy);font-size:16px;font-weight:700;font-style:italic}
+.note-box{background:var(--light);border-radius:7px;padding:12px 16px;margin-bottom:10px}
+.note-key{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.note-desc{font-size:12px;color:var(--slate)}
 
 /* ── MAINTENANCE CHARGE TABLE ── */
-.charge-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}
-.charge-table th{background:var(--navy);color:#fff;padding:8px 12px;text-align:left;font-size:10px;letter-spacing:.5px}
-.charge-table td{padding:8px 12px;border-bottom:.5px solid #e2e8f0}
+.charge-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+.charge-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-size:12px;letter-spacing:.5px}
+.charge-table td{padding:10px 14px;border-bottom:.5px solid #e2e8f0}
 .charge-table tr:nth-child(even) td{background:var(--light)}
 .charge-table .highlight{background:#fff3cd}
 
 /* ── TITLE SLIDE ── */
-.title-slide{background:var(--navy);min-height:480px;display:flex;flex-direction:column;justify-content:center;padding:40px 36px;position:relative;overflow:hidden}
+.title-slide{background:var(--navy);min-height:500px;display:flex;flex-direction:column;justify-content:center;padding:44px 40px;position:relative;overflow:hidden}
 .title-slide::after{content:'';position:absolute;right:0;top:0;width:180px;height:100%;background:var(--blue)}
 .title-slide::before{content:'';position:absolute;right:0;top:0;width:100px;height:100%;background:rgba(46,109,180,.4);z-index:1}
 .title-content{position:relative;z-index:2;max-width:560px}
 
 /* ── CLOSING SLIDE ── */
-.closing-slide{background:var(--navy);min-height:460px;display:flex;flex-direction:column;justify-content:center;padding:40px 36px;position:relative;overflow:hidden}
+.closing-slide{background:var(--navy);min-height:480px;display:flex;flex-direction:column;justify-content:center;padding:44px 40px;position:relative;overflow:hidden}
 .closing-slide::after{content:'';position:absolute;right:0;top:0;width:180px;height:100%;background:var(--blue)}
 .closing-slide::before{content:'';position:absolute;right:0;top:0;width:100px;height:100%;background:rgba(46,109,180,.4);z-index:1}
 .closing-content{position:relative;z-index:2;max-width:560px}
-.check-row{display:flex;align-items:center;gap:10px;margin-bottom:13px}
-.check-icon{font-size:18px;flex-shrink:0}
+.check-row{display:flex;align-items:center;gap:12px;margin-bottom:15px}
+.check-icon{font-size:20px;flex-shrink:0}
 
 /* ── FINANCE NOTE ROWS ── */
-.fnotes{display:flex;flex-direction:column;gap:8px}
-.fnrow{background:#fff;border-radius:7px;border:.5px solid #ccd9ee;border-left:3px solid var(--mid);padding:8px 12px}
-.fnkey{font-size:12px;font-weight:700;color:var(--navy)}
-.fndesc{font-size:10px;color:var(--slate);margin-top:1px}
+.fnotes{display:flex;flex-direction:column;gap:9px}
+.fnrow{background:#fff;border-radius:7px;border:.5px solid #ccd9ee;border-left:3px solid var(--mid);padding:10px 14px}
+.fnkey{font-size:14px;font-weight:700;color:var(--navy)}
+.fndesc{font-size:12px;color:var(--slate);margin-top:2px}
 
 /* ── EXPENSE PROGRESS BAR ITEMS ── */
-.exp-item{background:#fff;border-radius:7px;border:.5px solid #ccd9ee;padding:9px 12px;cursor:pointer;transition:transform .12s;margin-bottom:6px}
+.exp-item{background:#fff;border-radius:7px;border:.5px solid #ccd9ee;padding:11px 14px;cursor:pointer;transition:transform .12s;margin-bottom:7px}
 .exp-item:hover{transform:translateX(3px)}
-.exp-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
-.exp-name{font-size:11px;font-weight:700;color:var(--navy)}
-.exp-pct{font-size:13px;font-weight:700}
-.exp-bar-bg{height:5px;background:#e2e8f0;border-radius:3px}
-.exp-bar{height:5px;border-radius:3px}
+.exp-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.exp-name{font-size:13px;font-weight:700;color:var(--navy)}
+.exp-pct{font-size:15px;font-weight:700}
+.exp-bar-bg{height:6px;background:#e2e8f0;border-radius:3px}
+.exp-bar{height:6px;border-radius:3px}
 
 /* ── BUILDING COMPARISON ── */
-.bcomp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
-.bcard{border-radius:9px;padding:16px;border:.5px solid #ccd9ee;background:#fff;cursor:pointer;transition:transform .15s}
+.bcomp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.bcard{border-radius:9px;padding:18px;border:.5px solid #ccd9ee;background:#fff;cursor:pointer;transition:transform .15s}
 .bcard:hover{transform:translateY(-2px)}
-.bcard-top{font-size:10px;font-weight:700;color:#fff;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px}
-.bcard-amt{font-size:20px;font-weight:700;margin-bottom:2px}
-.bcard-sub{font-size:10px;color:var(--slate);margin-bottom:6px}
-.bcard-pct{font-size:24px;font-weight:700}
+.bcard-top{font-size:11px;font-weight:700;color:#fff;padding:4px 10px;border-radius:4px;display:inline-block;margin-bottom:9px}
+.bcard-amt{font-size:22px;font-weight:700;margin-bottom:3px}
+.bcard-sub{font-size:12px;color:var(--slate);margin-bottom:7px}
+.bcard-pct{font-size:26px;font-weight:700}
 
 /* ── MAINTENANCE CHARGES SLIDE ── */
-.maint-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.mcard{background:#fff;border-radius:9px;border:.5px solid #ccd9ee;padding:14px;text-align:center}
-.mcard-lbl{font-size:9px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
-.mcard-val{font-size:24px;font-weight:700;color:var(--navy)}
-.mcard-sub{font-size:10px;color:var(--slate);margin-top:2px}
-.delta-box{background:var(--light);border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:16px}
-.delta-num{font-size:26px;font-weight:700;color:var(--green)}
-.delta-lbl{font-size:11px;color:var(--slate)}
-.delta-pct{font-size:14px;font-weight:700;color:var(--green);margin-top:2px}
-.fd-badge{display:inline-block;background:#d4edda;color:#155724;padding:4px 12px;border-radius:4px;font-size:10px;font-weight:700;margin-top:8px}
+.maint-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.mcard{background:#fff;border-radius:9px;border:.5px solid #ccd9ee;padding:16px;text-align:center}
+.mcard-lbl{font-size:11px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px}
+.mcard-val{font-size:26px;font-weight:700;color:var(--navy)}
+.mcard-sub{font-size:12px;color:var(--slate);margin-top:3px}
+.delta-box{background:var(--light);border-radius:8px;padding:14px 18px;display:flex;align-items:center;gap:18px}
+.delta-num{font-size:28px;font-weight:700;color:var(--green)}
+.delta-lbl{font-size:13px;color:var(--slate)}
+.delta-pct{font-size:15px;font-weight:700;color:var(--green);margin-top:3px}
+.fd-badge{display:inline-block;background:#d4edda;color:#155724;padding:5px 14px;border-radius:4px;font-size:12px;font-weight:700;margin-top:9px}
 
+/* ── COMMITTEE MEMBER CARDS ── */
+.cm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-top:4px}
+.cm-card{background:#fff;border-radius:12px;border:.5px solid #ccd9ee;padding:20px 16px;text-align:center;cursor:pointer;transition:transform .15s}
+.cm-card:hover{transform:translateY(-3px)}
+.cm-avatar{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff;margin:0 auto 12px;letter-spacing:1px}
+.cm-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;line-height:1.3}
+.cm-role{font-size:11px;font-weight:700;color:#fff;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:6px}
+.cm-flat{font-size:12px;color:var(--slate)}
+.cm-tag{font-size:10px;color:var(--mid);margin-top:4px;font-weight:600}
+.cm-section-label{font-size:12px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:1px;margin:18px 0 10px;padding-left:4px}
+.cm-divider{height:1px;background:var(--lt);margin:18px 0}
 /* ── SCROLLABLE SLIDE NAV ── */
 </style>
 </head>
@@ -210,7 +225,7 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
     <span class="brand">MST SOCIETY · AGM 2026</span>
     <div class="nav-arrows">
       <button class="arr-btn" onclick="prev()">&#9664;</button>
-      <span class="slide-counter" id="ctr">1 / 18</span>
+      <span class="slide-counter" id="ctr">1 / 20</span>
       <button class="arr-btn" onclick="next()">&#9654;</button>
     </div>
   </div>
@@ -232,7 +247,9 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
     <button class="snav" onclick="go(14)">15. Policy</button>
     <button class="snav" onclick="go(15)">16. Projects</button>
     <button class="snav" onclick="go(16)">17. Resolutions</button>
-    <button class="snav" onclick="go(17)">18. Closing</button>
+    <button class="snav" onclick="go(17)">18. Committee 2025</button>
+    <button class="snav" onclick="go(18)">19. Committee 2026</button>
+    <button class="snav" onclick="go(19)">20. Closing</button>
   </div>
 </div>
 
@@ -721,8 +738,171 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
   </div>
 </div>
 
-<!-- ══ SLIDE 18: CLOSING ═════════════════════════════════════════════════════ -->
+<!-- ══ SLIDE 18: COMMITTEE MEMBERS 2025-26 ══════════════════════════════════ -->
 <div class="slide" id="s17">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">🏛️ Outgoing Committee — 2025–2026</div>
+    <div style="background:var(--lt);border-radius:8px;padding:11px 16px;font-size:13px;color:var(--navy);margin-bottom:18px;">
+      We gratefully acknowledge the outgoing Managing Committee for their dedicated service to MST Society during FY 2025–26. Their leadership has shaped this AGM agenda.
+    </div>
+
+    <div class="cm-section-label">Executive Office</div>
+    <div class="cm-grid">
+      <div class="cm-card" onclick="openM('m-comm-2025')">
+        <div class="cm-avatar" style="background:var(--navy)">RS</div>
+        <div class="cm-name">Rajesh Sharma</div>
+        <div class="cm-role" style="background:var(--navy)">Chairman</div>
+        <div class="cm-flat">Flat A-101</div>
+        <div class="cm-tag">Click for details →</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2025')">
+        <div class="cm-avatar" style="background:var(--blue)">PK</div>
+        <div class="cm-name">Priya Kulkarni</div>
+        <div class="cm-role" style="background:var(--blue)">Secretary</div>
+        <div class="cm-flat">Flat B-204</div>
+        <div class="cm-tag">Click for details →</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2025')">
+        <div class="cm-avatar" style="background:var(--mid)">AM</div>
+        <div class="cm-name">Anil Mehta</div>
+        <div class="cm-role" style="background:var(--mid)">Treasurer</div>
+        <div class="cm-flat">Flat C-312</div>
+        <div class="cm-tag">Click for details →</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2025')">
+        <div class="cm-avatar" style="background:var(--sky)">SJ</div>
+        <div class="cm-name">Sunita Joshi</div>
+        <div class="cm-role" style="background:var(--sky)">Jt. Secretary</div>
+        <div class="cm-flat">Flat D-108</div>
+        <div class="cm-tag">Click for details →</div>
+      </div>
+    </div>
+
+    <div class="cm-divider"></div>
+    <div class="cm-section-label">Committee Members</div>
+    <div class="cm-grid">
+      <div class="cm-card" onclick="openM('m-comm-2025')">
+        <div class="cm-avatar" style="background:#6b3e05">VD</div>
+        <div class="cm-name">Vikram Desai</div>
+        <div class="cm-role" style="background:#6b3e05">Member</div>
+        <div class="cm-flat">Flat A-215</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2025')">
+        <div class="cm-avatar" style="background:#3b6d11">NP</div>
+        <div class="cm-name">Neha Patil</div>
+        <div class="cm-role" style="background:#3b6d11">Member</div>
+        <div class="cm-flat">Flat B-307</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2025')">
+        <div class="cm-avatar" style="background:#854f0b">RG</div>
+        <div class="cm-name">Ravi Gupta</div>
+        <div class="cm-role" style="background:#854f0b">Member</div>
+        <div class="cm-flat">Flat C-110</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2025')">
+        <div class="cm-avatar" style="background:#993556">MS</div>
+        <div class="cm-name">Meera Singh</div>
+        <div class="cm-role" style="background:#993556">Member</div>
+        <div class="cm-flat">Flat D-402</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2025')">
+        <div class="cm-avatar" style="background:#534ab7">KN</div>
+        <div class="cm-name">Kiran Nair</div>
+        <div class="cm-role" style="background:#534ab7">Member</div>
+        <div class="cm-flat">Flat A-318</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 19: NEW COMMITTEE MEMBERS 2026-27 ══════════════════════════════ -->
+<div class="slide" id="s18">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">🎉 New Managing Committee — 2026–2027</div>
+    <div style="background:linear-gradient(135deg,#1a2f5e 0%,#1e4d8c 100%);border-radius:8px;padding:13px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px;">
+      <div style="font-size:28px">🏆</div>
+      <div>
+        <div style="color:var(--accent);font-size:13px;font-weight:700;margin-bottom:3px">Elected at AGM 2026 · Effective from April 2026</div>
+        <div style="color:#cadcfc;font-size:12px;">Congratulations to the newly elected committee. Their mandate runs through March 2027.</div>
+      </div>
+    </div>
+
+    <div class="cm-section-label">Executive Office — 2026-27</div>
+    <div class="cm-grid">
+      <div class="cm-card" onclick="openM('m-comm-2026')" style="border:1.5px solid var(--accent)">
+        <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">✦ Chairman</div>
+        <div class="cm-avatar" style="background:var(--navy)">DM</div>
+        <div class="cm-name">Deepak Malhotra</div>
+        <div class="cm-role" style="background:var(--navy)">Chairman</div>
+        <div class="cm-flat">Flat B-201</div>
+        <div class="cm-tag">Click for vision →</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2026')" style="border:1.5px solid var(--blue)">
+        <div style="font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">✦ Secretary</div>
+        <div class="cm-avatar" style="background:var(--blue)">AT</div>
+        <div class="cm-name">Ananya Thakur</div>
+        <div class="cm-role" style="background:var(--blue)">Secretary</div>
+        <div class="cm-flat">Flat C-405</div>
+        <div class="cm-tag">Click for vision →</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2026')" style="border:1.5px solid var(--mid)">
+        <div style="font-size:10px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">✦ Treasurer</div>
+        <div class="cm-avatar" style="background:var(--mid)">SR</div>
+        <div class="cm-name">Suresh Rao</div>
+        <div class="cm-role" style="background:var(--mid)">Treasurer</div>
+        <div class="cm-flat">Flat A-112</div>
+        <div class="cm-tag">Click for vision →</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2026')">
+        <div class="cm-avatar" style="background:var(--sky)">LB</div>
+        <div class="cm-name">Lakshmi Bhat</div>
+        <div class="cm-role" style="background:var(--sky)">Jt. Secretary</div>
+        <div class="cm-flat">Flat D-209</div>
+        <div class="cm-tag">Click for vision →</div>
+      </div>
+    </div>
+
+    <div class="cm-divider"></div>
+    <div class="cm-section-label">Committee Members — 2026-27</div>
+    <div class="cm-grid">
+      <div class="cm-card" onclick="openM('m-comm-2026')">
+        <div class="cm-avatar" style="background:#3b6d11">HV</div>
+        <div class="cm-name">Harish Verma</div>
+        <div class="cm-role" style="background:#3b6d11">Member</div>
+        <div class="cm-flat">Flat B-104</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2026')">
+        <div class="cm-avatar" style="background:#854f0b">ZK</div>
+        <div class="cm-name">Zara Khan</div>
+        <div class="cm-role" style="background:#854f0b">Member</div>
+        <div class="cm-flat">Flat C-216</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2026')">
+        <div class="cm-avatar" style="background:#534ab7">TI</div>
+        <div class="cm-name">Tarun Iyer</div>
+        <div class="cm-role" style="background:#534ab7">Member</div>
+        <div class="cm-flat">Flat A-320</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2026')">
+        <div class="cm-avatar" style="background:#993556">PC</div>
+        <div class="cm-name">Pooja Chawla</div>
+        <div class="cm-role" style="background:#993556">Member</div>
+        <div class="cm-flat">Flat D-115</div>
+      </div>
+      <div class="cm-card" onclick="openM('m-comm-2026')">
+        <div class="cm-avatar" style="background:#6b3e05">NS</div>
+        <div class="cm-name">Nikhil Shetty</div>
+        <div class="cm-role" style="background:#6b3e05">Member</div>
+        <div class="cm-flat">Flat B-408</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 20: CLOSING ═════════════════════════════════════════════════════ -->
+<div class="slide" id="s19">
   <div class="closing-slide">
     <div class="closing-content">
       <div style="font-size:40px;font-weight:700;color:#fff;margin-bottom:10px">Thank You</div>
@@ -1212,8 +1392,106 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
   </div>
 </div>
 
+<!-- M: Committee 2025-26 -->
+<div class="modal-host" id="m-comm-2025" onclick="bgClose(event,'m-comm-2025')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">🏛️ Outgoing Committee 2025–26 — Full Profiles</span><button class="mcls" onclick="closeM('m-comm-2025')">×</button></div>
+    <div class="modal-body">
+      <div style="background:var(--lt);border-radius:7px;padding:11px 15px;margin-bottom:16px;font-size:13px;color:var(--navy);font-style:italic">
+        The outgoing committee served from April 2025 to March 2026. Their key achievements include ₹37L fixed deposit, CCTV expansion, and establishment of the damage penalty framework.
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--light);border-radius:8px;border:.5px solid #ccd9ee">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0">RS</div>
+          <div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--navy)">Rajesh Sharma</div><div style="font-size:11px;color:var(--slate)">Chairman · Flat A-101 · 3rd term</div></div>
+          <span class="badge" style="background:var(--navy);color:#fff">Chairman</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--light);border-radius:8px;border:.5px solid #ccd9ee">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0">PK</div>
+          <div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--navy)">Priya Kulkarni</div><div style="font-size:11px;color:var(--slate)">Secretary · Flat B-204 · 1st term</div></div>
+          <span class="badge" style="background:var(--blue);color:#fff">Secretary</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--light);border-radius:8px;border:.5px solid #ccd9ee">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--mid);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0">AM</div>
+          <div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--navy)">Anil Mehta</div><div style="font-size:11px;color:var(--slate)">Treasurer · Flat C-312 · 2nd term</div></div>
+          <span class="badge" style="background:var(--mid);color:#fff">Treasurer</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--light);border-radius:8px;border:.5px solid #ccd9ee">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--sky);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0">SJ</div>
+          <div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--navy)">Sunita Joshi</div><div style="font-size:11px;color:var(--slate)">Jt. Secretary · Flat D-108 · 1st term</div></div>
+          <span class="badge" style="background:var(--sky);color:#fff">Jt. Secretary</span>
+        </div>
+        <div style="border-top:.5px solid #eee;padding-top:12px;margin-top:4px">
+          <div style="font-size:12px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Committee Members</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <div style="background:#fff;border:.5px solid #ccd9ee;border-radius:7px;padding:8px 12px;font-size:12px;color:var(--navy);font-weight:600">Vikram Desai · A-215</div>
+            <div style="background:#fff;border:.5px solid #ccd9ee;border-radius:7px;padding:8px 12px;font-size:12px;color:var(--navy);font-weight:600">Neha Patil · B-307</div>
+            <div style="background:#fff;border:.5px solid #ccd9ee;border-radius:7px;padding:8px 12px;font-size:12px;color:var(--navy);font-weight:600">Ravi Gupta · C-110</div>
+            <div style="background:#fff;border:.5px solid #ccd9ee;border-radius:7px;padding:8px 12px;font-size:12px;color:var(--navy);font-weight:600">Meera Singh · D-402</div>
+            <div style="background:#fff;border:.5px solid #ccd9ee;border-radius:7px;padding:8px 12px;font-size:12px;color:var(--navy);font-weight:600">Kiran Nair · A-318</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- M: New Committee 2026-27 -->
+<div class="modal-host" id="m-comm-2026" onclick="bgClose(event,'m-comm-2026')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">🎉 New Committee 2026–27 — Mandates & Vision</span><button class="mcls" onclick="closeM('m-comm-2026')">×</button></div>
+    <div class="modal-body">
+      <div class="quote-banner" style="margin-top:0"><p>" Serving with transparency for every resident "</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
+        <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--light);border-radius:8px;border:1.5px solid var(--accent)">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0">DM</div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:700;color:var(--navy)">Deepak Malhotra — Chairman</div>
+            <div style="font-size:11px;color:var(--slate);margin-top:2px">Flat B-201 · Focus: Technology-driven governance and smart access</div>
+          </div>
+          <span class="badge" style="background:var(--accent);color:var(--navy)">NEW</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--light);border-radius:8px;border:.5px solid #ccd9ee">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0">AT</div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:700;color:var(--navy)">Ananya Thakur — Secretary</div>
+            <div style="font-size:11px;color:var(--slate);margin-top:2px">Flat C-405 · Focus: Resident communication and society mobile app rollout</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--light);border-radius:8px;border:.5px solid #ccd9ee">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--mid);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0">SR</div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:700;color:var(--navy)">Suresh Rao — Treasurer</div>
+            <div style="font-size:11px;color:var(--slate);margin-top:2px">Flat A-112 · Focus: Defaulter recovery and financial transparency dashboard</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--light);border-radius:8px;border:.5px solid #ccd9ee">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--sky);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0">LB</div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:700;color:var(--navy)">Lakshmi Bhat — Jt. Secretary</div>
+            <div style="font-size:11px;color:var(--slate);margin-top:2px">Flat D-209 · Focus: Security operations and CCTV project completion</div>
+          </div>
+        </div>
+        <div style="border-top:.5px solid #eee;padding-top:12px;margin-top:4px">
+          <div style="font-size:12px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Committee Members</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <div style="background:#fff;border:.5px solid #ccd9ee;border-radius:7px;padding:8px 12px;font-size:12px;color:var(--navy);font-weight:600">Harish Verma · B-104</div>
+            <div style="background:#fff;border:.5px solid #ccd9ee;border-radius:7px;padding:8px 12px;font-size:12px;color:var(--navy);font-weight:600">Zara Khan · C-216</div>
+            <div style="background:#fff;border:.5px solid #ccd9ee;border-radius:7px;padding:8px 12px;font-size:12px;color:var(--navy);font-weight:600">Tarun Iyer · A-320</div>
+            <div style="background:#fff;border:.5px solid #ccd9ee;border-radius:7px;padding:8px 12px;font-size:12px;color:var(--navy);font-weight:600">Pooja Chawla · D-115</div>
+            <div style="background:#fff;border:.5px solid #ccd9ee;border-radius:7px;padding:8px 12px;font-size:12px;color:var(--navy);font-weight:600">Nikhil Shetty · B-408</div>
+          </div>
+        </div>
+        <div style="background:#fff3cd;border-radius:7px;padding:11px 15px;font-size:12px;color:var(--navy);margin-top:4px">
+          <strong>Key mandate for FY 2026-27:</strong> Implement Society Mobile App, complete CCTV upgrade, enforce damage policy, and recover ₹8L+ in defaulter dues.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-var cur=0,total=18,rendered={};
+var cur=0,total=20,rendered={};
 function go(n){
   document.querySelectorAll('.slide').forEach(function(s){s.classList.remove('on')});
   document.querySelectorAll('.snav').forEach(function(b){b.classList.remove('active')});
