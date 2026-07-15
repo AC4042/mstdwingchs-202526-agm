@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MST Society AGM 2026 — Interactive Presentation</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1a2f5e;--blue:#1e4d8c;--mid:#2e6db4;--sky:#4a90d9;--lt:#d6e4f7;
+  --accent:#e8a020;--green:#27ae60;--red:#c0392b;--slate:#475569;
+  --white:#fff;--light:#f0f4fa;--dark-card:#1e3a6e;
+}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#eef2f8;color:var(--navy);min-height:100vh}
+h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ── NAV ── */
+.topnav{background:var(--navy);padding:0;display:flex;flex-direction:column;position:sticky;top:0;z-index:200}
+.nav-row1{display:flex;align-items:center;justify-content:space-between;padding:8px 18px;gap:10px}
+.brand{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:3px;white-space:nowrap}
+.nav-arrows{display:flex;align-items:center;gap:8px}
+.arr-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;padding:5px 14px;border-radius:5px;cursor:pointer;font-size:12px;transition:background .15s}
+.arr-btn:hover{background:rgba(255,255,255,.2)}
+.slide-counter{color:#6688aa;font-size:11px;min-width:50px;text-align:center}
+.nav-row2{display:flex;overflow-x:auto;padding:0 12px 8px;gap:4px;scrollbar-width:none}
+.nav-row2::-webkit-scrollbar{display:none}
+.snav{background:none;border:1px solid rgba(255,255,255,.2);color:#aaccee;padding:4px 9px;border-radius:4px;cursor:pointer;font-size:10px;font-weight:600;white-space:nowrap;transition:all .15s}
+.snav:hover,.snav.active{background:var(--accent);color:var(--navy);border-color:var(--accent)}
+
+/* ── SLIDES ── */
+.slide-wrap{padding:14px 16px}
+.slide{display:none;border-radius:14px;overflow:hidden;animation:fadeUp .3s ease}
+.slide.on{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.topbar{background:var(--blue);padding:7px 20px;display:flex;justify-content:space-between}
+.topbar span{color:#fff;font-size:9px;font-weight:700;letter-spacing:2px}
+.topbar small{color:#aaccee;font-size:8px}
+.sbody{padding:24px 24px 20px;background:var(--light)}
+.sbody-dark{padding:24px 24px 20px;background:var(--navy)}
+.stitle{font-size:17px;font-weight:700;color:var(--navy);letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--accent)}
+.stitle-w{font-size:17px;font-weight:700;color:var(--accent);letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid rgba(232,160,32,.4)}
+
+/* ── CARDS / KPI ── */
+.kgrid{display:grid;gap:12px;margin-bottom:16px}
+.k3{grid-template-columns:repeat(3,1fr)}
+.k4{grid-template-columns:repeat(4,1fr)}
+.k2{grid-template-columns:repeat(2,1fr)}
+.kcard{background:#fff;border-radius:10px;border:.5px solid #ccd9ee;overflow:hidden;cursor:pointer;transition:transform .15s}
+.kcard:hover{transform:translateY(-2px)}
+.ktop{height:4px}
+.kbody{padding:12px 14px}
+.kval{font-size:24px;font-weight:700;margin-bottom:2px}
+.klbl{font-size:9px;color:var(--slate);font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.ksub{font-size:9px;color:#7a8aaa;margin-top:4px}
+.khint{font-size:9px;color:var(--mid);margin-top:6px;font-weight:600}
+
+/* ── STEP / ROW CARDS ── */
+.srow{display:flex;background:#fff;border-radius:8px;border:.5px solid #ccd9ee;overflow:hidden;margin-bottom:9px;cursor:pointer;transition:transform .15s}
+.srow:hover{transform:translateX(3px)}
+.snum{width:46px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0}
+.srbody{padding:10px 14px}
+.srtitle{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.srdesc{font-size:10px;color:var(--slate)}
+
+/* ── ISSUE CARDS ── */
+.igrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.icard{background:#fff;border-radius:9px;overflow:hidden;cursor:pointer;transition:transform .15s;border:.5px solid #ccd9ee}
+.icard:hover{transform:scale(1.02)}
+.ihead{padding:10px 14px;display:flex;align-items:center;gap:8px;color:#fff;font-size:11px;font-weight:700}
+.idesc{padding:10px 14px;font-size:10px;color:var(--slate)}
+
+/* ── RESOLUTION ROWS ── */
+.rrow{display:flex;background:var(--dark-card);border:1px solid #2e5090;border-radius:8px;overflow:hidden;margin-bottom:9px;cursor:pointer;transition:border-color .15s}
+.rrow:hover{border-color:var(--accent)}
+.rnum{width:52px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:10px;font-weight:700;flex-shrink:0}
+.rbody{padding:10px 14px;flex:1}
+.rtitle{font-size:12px;font-weight:700;color:#fff;margin-bottom:2px}
+.rdesc{font-size:10px;color:#aaccee}
+.rbadge{padding:10px 12px;display:flex;align-items:center;flex-shrink:0}
+.badge{padding:3px 9px;border-radius:3px;font-size:8px;font-weight:700;letter-spacing:1px}
+
+/* ── PROJECT ROWS ── */
+.prow{display:flex;align-items:center;background:#fff;border-radius:8px;border:.5px solid #ccd9ee;padding:13px 16px;margin-bottom:9px;gap:12px;cursor:pointer;transition:transform .15s}
+.prow:hover{transform:translateX(3px)}
+.picon{width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.pinfo{flex:1;min-width:0}
+.ptitle{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.pdesc{font-size:10px;color:var(--slate)}
+.pbar-bg{height:5px;background:#e2e8f0;border-radius:3px;margin-top:5px}
+.pbar{height:5px;border-radius:3px}
+.pright{text-align:right;flex-shrink:0}
+.pstat{padding:3px 10px;border-radius:3px;font-size:8px;font-weight:700;color:#fff;margin-bottom:4px;display:inline-block}
+.ppct{font-size:13px;font-weight:700}
+
+/* ── INIT CARDS ── */
+.init-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.init-card{background:#fff;border-radius:10px;border:.5px solid #ccd9ee;overflow:hidden;cursor:pointer;transition:transform .15s}
+.init-card:hover{transform:translateY(-3px)}
+.init-top{padding:18px;display:flex;justify-content:center;align-items:center;font-size:36px}
+.init-body{padding:12px 14px}
+.init-tag{display:inline-block;padding:2px 8px;border-radius:3px;font-size:8px;font-weight:700;margin-bottom:7px}
+.init-title{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.init-desc{font-size:10px;color:var(--slate)}
+
+/* ── POLICY DARK CARDS ── */
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.pcard{background:var(--dark-card);border-radius:8px;padding:14px;border:.5px solid #2e5090}
+.pcard-icon{font-size:20px;margin-bottom:6px}
+.pcard-title{color:#fff;font-size:12px;font-weight:700;margin-bottom:4px}
+.pcard-desc{color:#aaccee;font-size:10px;line-height:1.5}
+
+/* ── INSIGHT BOX ── */
+.insight{background:#fff3cd;border:1.5px solid var(--accent);border-radius:8px;padding:12px 16px;margin-top:14px}
+.insight-label{font-size:9px;font-weight:700;color:var(--red);letter-spacing:1px;margin-bottom:4px}
+.insight-text{font-size:11px;color:var(--navy)}
+
+/* ── MODALS ── */
+.modal-host{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;overflow-y:auto;padding:40px 16px}
+.modal-host.open{display:block}
+.modal-box{background:#fff;border-radius:14px;max-width:580px;margin:0 auto;overflow:hidden}
+.modal-hdr{padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.modal-title{color:#fff;font-size:13px;font-weight:700;letter-spacing:.5px}
+.mcls{background:none;border:none;color:rgba(255,255,255,.7);font-size:22px;cursor:pointer;line-height:1;padding:0 4px}
+.mcls:hover{color:#fff}
+.modal-body{padding:20px 22px}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:.5px solid #eee;font-size:12px}
+.info-row:last-child{border-bottom:none}
+.il{color:var(--slate)}
+.iv{font-weight:700;color:var(--navy)}
+.ch-wrap{position:relative;width:100%;margin-bottom:14px}
+.mleg{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:10px;font-size:11px;color:var(--slate)}
+.mleg-dot{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:4px;vertical-align:middle}
+.alert-box{border-radius:7px;padding:10px 14px;font-size:11px;margin-top:12px}
+.snap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.snap-item{background:var(--light);border-radius:8px;padding:10px 12px;text-align:center}
+.snap-val{font-size:22px;font-weight:700;margin-bottom:2px}
+.snap-lbl{font-size:9px;color:var(--slate);text-transform:uppercase;letter-spacing:.5px}
+.quote-banner{background:var(--accent);border-radius:8px;padding:13px 18px;margin:10px 0;text-align:center}
+.quote-banner p{color:var(--navy);font-size:14px;font-weight:700;font-style:italic}
+.note-box{background:var(--light);border-radius:7px;padding:10px 14px;margin-bottom:9px}
+.note-key{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.note-desc{font-size:10px;color:var(--slate)}
+
+/* ── MAINTENANCE CHARGE TABLE ── */
+.charge-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}
+.charge-table th{background:var(--navy);color:#fff;padding:8px 12px;text-align:left;font-size:10px;letter-spacing:.5px}
+.charge-table td{padding:8px 12px;border-bottom:.5px solid #e2e8f0}
+.charge-table tr:nth-child(even) td{background:var(--light)}
+.charge-table .highlight{background:#fff3cd}
+
+/* ── TITLE SLIDE ── */
+.title-slide{background:var(--navy);min-height:480px;display:flex;flex-direction:column;justify-content:center;padding:40px 36px;position:relative;overflow:hidden}
+.title-slide::after{content:'';position:absolute;right:0;top:0;width:180px;height:100%;background:var(--blue)}
+.title-slide::before{content:'';position:absolute;right:0;top:0;width:100px;height:100%;background:rgba(46,109,180,.4);z-index:1}
+.title-content{position:relative;z-index:2;max-width:560px}
+
+/* ── CLOSING SLIDE ── */
+.closing-slide{background:var(--navy);min-height:460px;display:flex;flex-direction:column;justify-content:center;padding:40px 36px;position:relative;overflow:hidden}
+.closing-slide::after{content:'';position:absolute;right:0;top:0;width:180px;height:100%;background:var(--blue)}
+.closing-slide::before{content:'';position:absolute;right:0;top:0;width:100px;height:100%;background:rgba(46,109,180,.4);z-index:1}
+.closing-content{position:relative;z-index:2;max-width:560px}
+.check-row{display:flex;align-items:center;gap:10px;margin-bottom:13px}
+.check-icon{font-size:18px;flex-shrink:0}
+
+/* ── FINANCE NOTE ROWS ── */
+.fnotes{display:flex;flex-direction:column;gap:8px}
+.fnrow{background:#fff;border-radius:7px;border:.5px solid #ccd9ee;border-left:3px solid var(--mid);padding:8px 12px}
+.fnkey{font-size:12px;font-weight:700;color:var(--navy)}
+.fndesc{font-size:10px;color:var(--slate);margin-top:1px}
+
+/* ── EXPENSE PROGRESS BAR ITEMS ── */
+.exp-item{background:#fff;border-radius:7px;border:.5px solid #ccd9ee;padding:9px 12px;cursor:pointer;transition:transform .12s;margin-bottom:6px}
+.exp-item:hover{transform:translateX(3px)}
+.exp-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.exp-name{font-size:11px;font-weight:700;color:var(--navy)}
+.exp-pct{font-size:13px;font-weight:700}
+.exp-bar-bg{height:5px;background:#e2e8f0;border-radius:3px}
+.exp-bar{height:5px;border-radius:3px}
+
+/* ── BUILDING COMPARISON ── */
+.bcomp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.bcard{border-radius:9px;padding:16px;border:.5px solid #ccd9ee;background:#fff;cursor:pointer;transition:transform .15s}
+.bcard:hover{transform:translateY(-2px)}
+.bcard-top{font-size:10px;font-weight:700;color:#fff;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:8px}
+.bcard-amt{font-size:20px;font-weight:700;margin-bottom:2px}
+.bcard-sub{font-size:10px;color:var(--slate);margin-bottom:6px}
+.bcard-pct{font-size:24px;font-weight:700}
+
+/* ── MAINTENANCE CHARGES SLIDE ── */
+.maint-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.mcard{background:#fff;border-radius:9px;border:.5px solid #ccd9ee;padding:14px;text-align:center}
+.mcard-lbl{font-size:9px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.mcard-val{font-size:24px;font-weight:700;color:var(--navy)}
+.mcard-sub{font-size:10px;color:var(--slate);margin-top:2px}
+.delta-box{background:var(--light);border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:16px}
+.delta-num{font-size:26px;font-weight:700;color:var(--green)}
+.delta-lbl{font-size:11px;color:var(--slate)}
+.delta-pct{font-size:14px;font-weight:700;color:var(--green);margin-top:2px}
+.fd-badge{display:inline-block;background:#d4edda;color:#155724;padding:4px 12px;border-radius:4px;font-size:10px;font-weight:700;margin-top:8px}
+
+/* ── SCROLLABLE SLIDE NAV ── */
+</style>
+</head>
+<body>
+<h2 class="sr-only">MST Society AGM 2026 — Interactive presentation with 18 slides covering financials, expenses, defaulters, security, policy and resolutions</h2>
+
+<div class="topnav">
+  <div class="nav-row1">
+    <span class="brand">MST SOCIETY · AGM 2026</span>
+    <div class="nav-arrows">
+      <button class="arr-btn" onclick="prev()">&#9664;</button>
+      <span class="slide-counter" id="ctr">1 / 18</span>
+      <button class="arr-btn" onclick="next()">&#9654;</button>
+    </div>
+  </div>
+  <div class="nav-row2" id="navrow">
+    <button class="snav active" onclick="go(0)">1. Title</button>
+    <button class="snav" onclick="go(1)">2. Summary</button>
+    <button class="snav" onclick="go(2)">3. Financials</button>
+    <button class="snav" onclick="go(3)">4. Maint. Exp</button>
+    <button class="snav" onclick="go(4)">5. D+Common</button>
+    <button class="snav" onclick="go(5)">6. D Exp</button>
+    <button class="snav" onclick="go(6)">7. Common Exp</button>
+    <button class="snav" onclick="go(7)">8. Defaulters</button>
+    <button class="snav" onclick="go(8)">9. Issues</button>
+    <button class="snav" onclick="go(9)">10. Initiatives</button>
+    <button class="snav" onclick="go(10)">11. Maint. Exp2</button>
+    <button class="snav" onclick="go(11)">12. D+Common2</button>
+    <button class="snav" onclick="go(12)">13. Charges</button>
+    <button class="snav" onclick="go(13)">14. Security</button>
+    <button class="snav" onclick="go(14)">15. Policy</button>
+    <button class="snav" onclick="go(15)">16. Projects</button>
+    <button class="snav" onclick="go(16)">17. Resolutions</button>
+    <button class="snav" onclick="go(17)">18. Closing</button>
+  </div>
+</div>
+
+<div class="slide-wrap">
+
+<!-- ══ SLIDE 1: TITLE ══════════════════════════════════════════════════════ -->
+<div class="slide on" id="s0">
+  <div class="title-slide">
+    <div class="title-content">
+      <div style="color:var(--accent);font-size:11px;font-weight:700;letter-spacing:4px;margin-bottom:10px">MST SOCIETY</div>
+      <div style="font-size:36px;font-weight:700;color:#fff;line-height:1.15;margin-bottom:14px">Annual General<br>Meeting 2026</div>
+      <div style="color:#aaccee;font-size:12px;margin-bottom:18px">Annual General Meeting &nbsp;|&nbsp; 160 Flats &nbsp;|&nbsp; India</div>
+      <div style="display:inline-block;background:var(--accent);color:var(--navy);padding:6px 18px;border-radius:4px;font-size:10px;font-weight:700;margin-bottom:20px">Governing with Integrity</div>
+      <div style="height:2px;background:var(--accent);width:340px;max-width:100%;margin-bottom:18px"></div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <span style="color:#6688aa;font-size:10px">Managing Committee</span>
+        <span style="color:#6688aa;font-size:10px">· Residents</span>
+        <span style="color:#6688aa;font-size:10px">· Owners</span>
+        <span style="color:#6688aa;font-size:10px">· Tenants</span>
+      </div>
+    </div>
+    <div style="position:absolute;right:22px;top:50%;transform:translateY(-50%);z-index:3;font-size:72px;opacity:.55">🏢</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 2: EXECUTIVE SUMMARY ═══════════════════════════════════════════ -->
+<div class="slide" id="s1">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">Executive Summary</div>
+    <div class="kgrid k3">
+      <div class="kcard" onclick="openM('m-summary-coll')">
+        <div class="ktop" style="background:var(--green)"></div>
+        <div class="kbody">
+          <div style="font-size:20px;margin-bottom:4px">₹</div>
+          <div class="kval" style="color:var(--green)">~90%</div>
+          <div class="klbl">Collection Rate</div>
+          <div class="ksub">Maintenance collections on track</div>
+          <div class="khint">Click for detail →</div>
+        </div>
+      </div>
+      <div class="kcard" onclick="openM('m-summary-concerns')">
+        <div class="ktop" style="background:var(--red)"></div>
+        <div class="kbody">
+          <div style="font-size:20px;margin-bottom:4px">⚠️</div>
+          <div class="kval" style="color:var(--red)">2 Critical</div>
+          <div class="klbl">Key Concerns</div>
+          <div class="ksub">Unauthorized access &amp; property damage</div>
+          <div class="khint">Click for detail →</div>
+        </div>
+      </div>
+      <div class="kcard" onclick="openM('m-summary-pillars')">
+        <div class="ktop" style="background:var(--blue)"></div>
+        <div class="kbody">
+          <div style="font-size:20px;margin-bottom:4px">🛡️</div>
+          <div class="kval" style="color:var(--blue)">3 Pillars</div>
+          <div class="klbl">Priority Focus</div>
+          <div class="ksub">Security · Finance · Governance</div>
+          <div class="khint">Click for detail →</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--lt);border-radius:7px;padding:10px 14px;font-size:10px;color:var(--navy);font-style:italic">
+      This AGM aims to review FY2025-26 performance, address key concerns, and approve critical resolutions.
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 3: FINANCIAL OVERVIEW ══════════════════════════════════════════ -->
+<div class="slide" id="s2">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">Financial Overview — FY 2025-26</div>
+    <div class="kgrid k3" style="margin-bottom:14px">
+      <div class="kcard">
+        <div class="ktop" style="background:var(--mid)"></div>
+        <div class="kbody"><div class="kval" style="color:var(--mid);font-size:18px">₹31,94,921</div><div class="klbl">Maintenance Income</div></div>
+      </div>
+      <div class="kcard">
+        <div class="ktop" style="background:var(--accent)"></div>
+        <div class="kbody"><div class="kval" style="color:var(--accent);font-size:18px">₹73,48,454</div><div class="klbl">Handover from Builder</div></div>
+      </div>
+      <div class="kcard">
+        <div class="ktop" style="background:var(--blue)"></div>
+        <div class="kbody"><div class="kval" style="color:var(--blue);font-size:18px">₹1,05,43,375</div><div class="klbl">Total Income</div></div>
+      </div>
+    </div>
+    <div class="kgrid k3">
+      <div class="kcard" onclick="openM('m-finance')">
+        <div class="ktop" style="background:var(--red)"></div>
+        <div class="kbody"><div class="kval" style="color:var(--red);font-size:18px">₹54,32,947</div><div class="klbl">Total Expenses</div><div class="khint">Click for chart →</div></div>
+      </div>
+      <div class="kcard">
+        <div class="ktop" style="background:var(--green)"></div>
+        <div class="kbody"><div class="kval" style="color:var(--green);font-size:18px">₹41,60,751</div><div class="klbl">Fixed Deposit (Surplus)</div></div>
+      </div>
+      <div class="kcard">
+        <div class="ktop" style="background:var(--navy)"></div>
+        <div class="kbody"><div class="kval" style="color:var(--navy);font-size:18px">₹12,62,505.94</div><div class="klbl">Net Surplus</div></div>
+      </div>
+    </div>
+    <div class="kgrid k3">
+      <div class="kcard">
+        <div class="ktop" style="background:var(--slate)"></div>
+        <div class="kbody"><div class="kval" style="color:var(--slate);font-size:18px">₹3,16,745</div><div class="klbl">Maintenance Receivable</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 4: MAINTENANCE EXPENSE BREAKDOWN ════════════════════════════════ -->
+<div class="slide" id="s3">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">Maintenance Expense Breakdown</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start">
+      <div onclick="openM('m-maint-exp')" style="cursor:pointer">
+        <div class="ch-wrap" style="height:280px"><canvas id="cMaintPie" role="img" aria-label="Pie chart of maintenance expense breakdown by category">Service, Electricity, Utility, AMC, Other — each 20% approximate.</canvas></div>
+        <div style="text-align:center;font-size:9px;color:var(--mid);margin-top:4px">Click for detail →</div>
+      </div>
+      <div>
+        <div class="exp-item" onclick="openM('m-maint-service-exp')"><div class="exp-row"><span class="exp-name">🔧 Service</span><span class="exp-pct" style="color:var(--navy)">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:var(--navy);width:32%"></div></div></div>
+        <div class="exp-item" onclick="openM('m-maint-electricity-exp')"><div class="exp-row"><span class="exp-name">⚡ Electricity</span><span class="exp-pct" style="color:var(--mid)">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:var(--mid);width:32%"></div></div></div>
+        <div class="exp-item" onclick="openM('m-maint-utility-exp')"><div class="exp-row"><span class="exp-name">💧 Utility</span><span class="exp-pct" style="color:var(--sky)">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:var(--sky);width:32%"></div></div></div>
+        <div class="exp-item" onclick="openM('m-maint-amc-exp')"><div class="exp-row"><span class="exp-name">📋 AMC</span><span class="exp-pct" style="color:var(--accent)">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:var(--accent);width:32%"></div></div></div>
+        <div class="exp-item" onclick="openM('m-maint-other-exp')"><div class="exp-row"><span class="exp-name">📁 Other</span><span class="exp-pct" style="color:#9ca3af">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:#9ca3af;width:32%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 5: D BUILDING + COMMON EXPENSE BREAKDOWN ══════════════════════ -->
+<div class="slide" id="s4">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">D Building &amp; Common Expense Breakdown</div>
+    <div class="bcomp">
+      <div class="bcard">
+        <div class="bcard-top" style="background:var(--blue)">D Building</div>
+        <div class="bcard-amt" style="color:var(--blue)">₹59,74,945</div>
+        <div class="bcard-sub">Monthly: ₹4,97,308</div>
+        <div class="bcard-pct" style="color:var(--blue)">56%</div>
+      </div>
+      <div class="bcard">
+        <div class="bcard-top" style="background:var(--mid)">Common</div>
+        <div class="bcard-amt" style="color:var(--mid)">₹46,93,193</div>
+        <div class="bcard-sub">Monthly: ₹3,91,099</div>
+        <div class="bcard-pct" style="color:var(--mid)">44%</div>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:9px;border:.5px solid #ccd9ee;padding:14px 18px;cursor:pointer">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <span style="font-size:12px;font-weight:700;color:var(--navy)">Total Expenses</span>
+        <span style="font-size:18px;font-weight:700;color:var(--navy)">₹1,06,68,138</span>
+      </div>
+      <div style="font-size:10px;color:var(--slate);margin-bottom:8px">Monthly: ₹8,88,407</div>
+      <div style="height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden;display:flex">
+        <div style="width:56%;background:var(--blue);border-radius:4px 0 0 4px"></div>
+        <div style="width:44%;background:var(--mid);border-radius:0 4px 4px 0"></div>
+      </div>
+      <div style="display:flex;gap:16px;margin-top:6px;font-size:9px;color:var(--slate)">
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--blue);border-radius:2px;margin-right:3px"></span>D Building 56%</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:var(--mid);border-radius:2px;margin-right:3px"></span>Common 44%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 6: D EXPENSE BREAKDOWN ════════════════════════════════════════ -->
+<div class="slide" id="s5">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">D Expense Breakdown</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start">
+      <div onclick="openM('m-d-exp')" style="cursor:pointer">
+        <div class="ch-wrap" style="height:280px"><canvas id="cDExpPie" role="img" aria-label="Pie chart of D building expense breakdown by category">Service, Electricity, Utility, AMC, Other categories.</canvas></div>
+        <div style="text-align:center;font-size:9px;color:var(--mid);margin-top:4px">Click for detail →</div>
+      </div>
+      <div>
+        <div class="exp-item" onclick="openM('m-d-exp')"><div class="exp-row"><span class="exp-name">🔧 Service</span><span class="exp-pct" style="color:var(--navy)">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:var(--navy);width:32%"></div></div></div>
+        <div class="exp-item" onclick="openM('m-d-exp')"><div class="exp-row"><span class="exp-name">⚡ Electricity</span><span class="exp-pct" style="color:var(--mid)">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:var(--mid);width:32%"></div></div></div>
+        <div class="exp-item" onclick="openM('m-d-exp')"><div class="exp-row"><span class="exp-name">💧 Utility</span><span class="exp-pct" style="color:var(--sky)">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:var(--sky);width:32%"></div></div></div>
+        <div class="exp-item" onclick="openM('m-d-exp')"><div class="exp-row"><span class="exp-name">📋 AMC</span><span class="exp-pct" style="color:var(--accent)">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:var(--accent);width:32%"></div></div></div>
+        <div class="exp-item" onclick="openM('m-d-exp')"><div class="exp-row"><span class="exp-name">📁 Other</span><span class="exp-pct" style="color:#9ca3af">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:#9ca3af;width:32%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 7: COMMON EXPENSE BREAKDOWN ════════════════════════════════════ -->
+<div class="slide" id="s6">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">Common Expense Breakdown</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start">
+      <div onclick="openM('m-common-exp')" style="cursor:pointer">
+        <div class="ch-wrap" style="height:280px"><canvas id="cCommonPie" role="img" aria-label="Pie chart of common area expense breakdown">Service, Electricity, Utility, AMC, Other categories.</canvas></div>
+        <div style="text-align:center;font-size:9px;color:var(--mid);margin-top:4px">Click for detail →</div>
+      </div>
+      <div>
+        <div class="exp-item" onclick="openM('m-common-exp')"><div class="exp-row"><span class="exp-name">🔧 Service</span><span class="exp-pct" style="color:var(--navy)">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:var(--navy);width:32%"></div></div></div>
+        <div class="exp-item" onclick="openM('m-common-exp')"><div class="exp-row"><span class="exp-name">⚡ Electricity</span><span class="exp-pct" style="color:var(--mid)">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:var(--mid);width:32%"></div></div></div>
+        <div class="exp-item" onclick="openM('m-common-exp')"><div class="exp-row"><span class="exp-name">💧 Utility</span><span class="exp-pct" style="color:var(--sky)">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:var(--sky);width:32%"></div></div></div>
+        <div class="exp-item" onclick="openM('m-common-exp')"><div class="exp-row"><span class="exp-name">📋 AMC</span><span class="exp-pct" style="color:var(--accent)">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:var(--accent);width:32%"></div></div></div>
+        <div class="exp-item" onclick="openM('m-common-exp')"><div class="exp-row"><span class="exp-name">📁 Other</span><span class="exp-pct" style="color:#9ca3af">32%</span></div><div class="exp-bar-bg"><div class="exp-bar" style="background:#9ca3af;width:32%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 8: DEFAULTERS & RECOVERY ══════════════════════════════════════ -->
+<div class="slide" id="s7">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">Defaulters &amp; Recovery</div>
+    <div class="kgrid k3" style="margin-bottom:16px">
+      <div class="kcard" onclick="openM('m-defaulters')"><div class="ktop" style="background:var(--red)"></div><div class="kbody"><div class="kval" style="color:var(--red)">28</div><div class="klbl">Total Defaulters</div><div class="khint">Click for chart →</div></div></div>
+      <div class="kcard" onclick="openM('m-defaulters')"><div class="ktop" style="background:var(--navy)"></div><div class="kbody"><div class="kval" style="color:var(--navy)">12</div><div class="klbl">High-Value (&gt;₹50k)</div><div class="khint">Click for chart →</div></div></div>
+      <div class="kcard" onclick="openM('m-defaulters')"><div class="ktop" style="background:var(--accent)"></div><div class="kbody"><div class="kval" style="color:var(--accent)">₹8L+</div><div class="klbl">Pending Dues Est.</div></div></div>
+    </div>
+    <div class="srow" onclick="openM('m-defaulters')"><div class="snum" style="background:var(--sky)">01</div><div class="srbody"><div class="srtitle">Written Notices</div><div class="srdesc">Formal reminder notices sent to all defaulters</div></div></div>
+    <div class="srow" onclick="openM('m-defaulters')"><div class="snum" style="background:var(--accent)">02</div><div class="srbody"><div class="srtitle">Penalty Application</div><div class="srdesc">Late payment penalties applied per society bylaws</div></div></div>
+    <div class="srow" onclick="openM('m-defaulters')"><div class="snum" style="background:var(--red)">03</div><div class="srbody"><div class="srtitle">Escalation Process</div><div class="srdesc">Committee escalation for dues above ₹25,000</div></div></div>
+    <div class="srow" onclick="openM('m-defaulters')"><div class="snum" style="background:var(--navy)">04</div><div class="srbody"><div class="srtitle">Legal Action Option</div><div class="srdesc">Legal recourse for persistent non-payers above ₹50k</div></div></div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 9: KEY ISSUES ══════════════════════════════════════════════════ -->
+<div class="slide" id="s8">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">Key Issues Identified</div>
+    <div class="igrid">
+      <div class="icard" onclick="openM('m-issues')">
+        <div class="ihead" style="background:var(--red)">👥 Unauthorized Brokers &amp; Agents</div>
+        <div class="idesc">Unregistered agents freely entering society premises without verification. No accountability trail maintained.</div>
+      </div>
+      <div class="icard" onclick="openM('m-issues')">
+        <div class="ihead" style="background:var(--accent)">⬆ Lift Misuse During Shifting</div>
+        <div class="idesc">Heavy goods shifting causing lift damage and breakdowns affecting all residents.</div>
+      </div>
+      <div class="icard" onclick="openM('m-issues')">
+        <div class="ihead" style="background:var(--navy)">🚗 Parking Damage &amp; Violations</div>
+        <div class="idesc">Unauthorized parking, scratches, and boundary violations reported frequently.</div>
+      </div>
+      <div class="icard" onclick="openM('m-issues')">
+        <div class="ihead" style="background:var(--mid)">🛡 Security Gaps</div>
+        <div class="idesc">Inadequate visitor tracking and gate management lapses noted across the society.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 10: FUTURE INITIATIVES ════════════════════════════════════════ -->
+<div class="slide" id="s9">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">Future Initiatives</div>
+    <div class="init-grid">
+      <div class="init-card" onclick="openM('m-initiatives')">
+        <div class="init-top" style="background:var(--blue)">📱</div>
+        <div class="init-body">
+          <div class="init-tag" style="background:var(--lt);color:var(--blue)">FY 2026-27</div>
+          <div class="init-title">Society Mobile App</div>
+          <div class="init-desc">Unified app for complaints, gate passes, maintenance payments, notices, and communication</div>
+        </div>
+      </div>
+      <div class="init-card" onclick="openM('m-initiatives')">
+        <div class="init-top" style="background:var(--navy)">🔒</div>
+        <div class="init-body">
+          <div class="init-tag" style="background:var(--lt);color:var(--blue)">FY 2026-27</div>
+          <div class="init-title">Smart Access Control</div>
+          <div class="init-desc">RFID-based access for vehicles and residents with real-time logs and alerts</div>
+        </div>
+      </div>
+      <div class="init-card" onclick="openM('m-initiatives')">
+        <div class="init-top" style="background:var(--green)">☀️</div>
+        <div class="init-body">
+          <div class="init-tag" style="background:#dcfce7;color:var(--green)">Under Review</div>
+          <div class="init-title">Solar Feasibility Study</div>
+          <div class="init-desc">Rooftop solar installation assessment to reduce common area electricity costs</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--lt);border-radius:6px;padding:9px 14px;font-size:10px;color:var(--navy);font-style:italic;margin-top:12px">
+      All initiatives subject to AGM approval and budget allocation for FY 2026-27.
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 11: MAINTENANCE EXPENSE BREAKDOWN (repeat) ══════════════════════ -->
+<div class="slide" id="s10">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">Maintenance Expense Breakdown</div>
+    <div onclick="openM('m-maint-exp2')" style="cursor:pointer">
+      <div class="ch-wrap" style="height:300px"><canvas id="cMaintBar" role="img" aria-label="Horizontal bar chart showing maintenance expense categories with equal distribution">Service, Electricity, Utility, AMC, Other — each 20%.</canvas></div>
+      <div style="text-align:center;font-size:9px;color:var(--mid);margin-top:4px">Click for full breakdown →</div>
+    </div>
+    <div class="kgrid k3" style="margin-top:14px">
+      <div class="kcard" onclick="openM('m-maint-exp2')"><div class="ktop" style="background:var(--navy)"></div><div class="kbody"><div class="kval" style="color:var(--navy);font-size:18px">₹19.2L</div><div class="klbl">Service</div></div></div>
+      <div class="kcard" onclick="openM('m-maint-exp2')"><div class="ktop" style="background:var(--mid)"></div><div class="kbody"><div class="kval" style="color:var(--mid);font-size:18px">₹19.2L</div><div class="klbl">Electricity</div></div></div>
+      <div class="kcard" onclick="openM('m-maint-exp2')"><div class="ktop" style="background:var(--sky)"></div><div class="kbody"><div class="kval" style="color:var(--sky);font-size:18px">₹19.2L</div><div class="klbl">Utility</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 12: D BUILDING & COMMON EXPENSE (repeat) ══════════════════════ -->
+<div class="slide" id="s11">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">D Building &amp; Common Expense Breakdown</div>
+    <div onclick="openM('m-bldg-common2')" style="cursor:pointer;margin-bottom:14px">
+      <div class="ch-wrap" style="height:260px"><canvas id="cBldgBar" role="img" aria-label="Horizontal bar chart comparing D Building 56% versus Common 44% of total expenses">D Building ₹59.7L (56%), Common ₹46.9L (44%).</canvas></div>
+      <div style="text-align:center;font-size:9px;color:var(--mid);margin-top:4px">Click for detail →</div>
+    </div>
+    <div style="background:#fff;border-radius:9px;border:.5px solid #ccd9ee;padding:14px 18px">
+      <div class="info-row"><span class="il">D Building (56%)</span><span class="iv" style="color:var(--blue)">₹59,74,945 &nbsp;·&nbsp; ₹4,97,308/mo</span></div>
+      <div class="info-row"><span class="il">Common (44%)</span><span class="iv" style="color:var(--mid)">₹46,93,193 &nbsp;·&nbsp; ₹3,91,099/mo</span></div>
+      <div class="info-row"><span class="il" style="font-weight:700;color:var(--navy)">Total</span><span class="iv">₹1,06,68,138 &nbsp;·&nbsp; ₹8,88,407/mo</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 13: MAINTENANCE CHARGES ════════════════════════════════════════ -->
+<div class="slide" id="s12">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">Financial Overview — Maintenance Charges</div>
+    <div class="maint-grid">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:11px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px">Current Charges</div>
+        <div class="mcard" style="cursor:pointer" onclick="openM('m-charges')">
+          <div class="mcard-lbl">Residing Owner — Monthly</div>
+          <div class="mcard-val">₹5,500</div>
+          <div class="mcard-sub">Current maintenance</div>
+        </div>
+        <div class="mcard" style="cursor:pointer" onclick="openM('m-charges')">
+          <div class="mcard-lbl">Rented Unit — Monthly</div>
+          <div class="mcard-val">₹5,700</div>
+          <div class="mcard-sub">Current maintenance</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:11px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px">New Charges</div>
+        <div class="mcard" style="cursor:pointer;border:1.5px solid var(--green)" onclick="openM('m-charges')">
+          <div class="mcard-lbl">Residing Owner — Monthly</div>
+          <div class="mcard-val" style="color:var(--green)">₹7,100</div>
+          <div class="mcard-sub">Revised maintenance</div>
+        </div>
+        <div class="mcard" style="cursor:pointer;border:1.5px solid var(--green)" onclick="openM('m-charges')">
+          <div class="mcard-lbl">Rented Unit — Monthly</div>
+          <div class="mcard-val" style="color:var(--green)">₹7,400</div>
+          <div class="mcard-sub">Revised maintenance</div>
+        </div>
+      </div>
+    </div>
+    <div class="delta-box" style="cursor:pointer" onclick="openM('m-charges')">
+      <div>
+        <div style="font-size:11px;color:var(--slate);margin-bottom:3px">Increase per flat</div>
+        <div class="delta-num">₹1,700</div>
+        <div class="delta-pct">22.5% increase</div>
+      </div>
+      <div style="flex:1">
+        <div style="font-size:10px;color:var(--slate);margin-bottom:5px">Fixed Deposit — Healthy Surplus</div>
+        <div class="fd-badge">₹37,00,000 in FD</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 14: SECURITY STRENGTHENING PLAN ════════════════════════════════ -->
+<div class="slide" id="s13">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">Security Strengthening Plan</div>
+    <div class="srow" onclick="openM('m-security')"><div class="snum" style="background:var(--blue)">01</div><div class="srbody"><div class="srtitle">📱 Digital Visitor Management</div><div class="srdesc">App-based visitor pre-approval and digital logbook for all entries and exits</div></div></div>
+    <div class="srow" onclick="openM('m-security')"><div class="snum" style="background:var(--mid)">02</div><div class="srbody"><div class="srtitle">✅ Agent Registration Protocol</div><div class="srdesc">Mandatory registration of brokers/agents before society entry — ID + contact verification</div></div></div>
+    <div class="srow" onclick="openM('m-security')"><div class="snum" style="background:var(--navy)">03</div><div class="srbody"><div class="srtitle">🔒 Flat-Level Access Restriction</div><div class="srdesc">Owner must inform management before any tenant/visitor access for shifting or renovation</div></div></div>
+    <div class="srow" onclick="openM('m-security')"><div class="snum" style="background:var(--sky)">04</div><div class="srbody"><div class="srtitle">📹 24/7 CCTV Monitoring</div><div class="srdesc">Enhanced camera coverage at gates, lifts, parking, and common areas with remote monitoring</div></div></div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 15: PROPERTY DAMAGE & PENALTY POLICY ════════════════════════════ -->
+<div class="slide" id="s14">
+  <div class="topbar" style="background:#0f2040"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody-dark">
+    <div class="stitle-w">⚠️ Property Damage &amp; Penalty Policy</div>
+    <div class="quote-banner" style="cursor:pointer" onclick="openM('m-policy')">
+      <p>" Damage by one cannot be paid by all "</p>
+    </div>
+    <div class="pgrid">
+      <div class="pcard" onclick="openM('m-policy')" style="cursor:pointer">
+        <div class="pcard-icon">🏠</div>
+        <div class="pcard-title">Owner Responsibility</div>
+        <div class="pcard-desc">Owners are fully liable for damage caused by tenants, guests, or contractors</div>
+      </div>
+      <div class="pcard" onclick="openM('m-policy')" style="cursor:pointer">
+        <div class="pcard-icon">₹</div>
+        <div class="pcard-title">Mandatory Deposit</div>
+        <div class="pcard-desc">Refundable deposit required before any shifting or renovation work begins</div>
+      </div>
+      <div class="pcard" onclick="openM('m-policy')" style="cursor:pointer">
+        <div class="pcard-icon">⬆</div>
+        <div class="pcard-title">Lift Damage Penalty</div>
+        <div class="pcard-desc">Minimum ₹5,000 penalty for lift damage during shifting — payable immediately</div>
+      </div>
+      <div class="pcard" onclick="openM('m-policy')" style="cursor:pointer">
+        <div class="pcard-icon">🏢</div>
+        <div class="pcard-title">Structural Damage Penalty</div>
+        <div class="pcard-desc">Minimum ₹25,000+ for structural damage to common property or infrastructure</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 16: PROJECTS & UPDATES ════════════════════════════════════════ -->
+<div class="slide" id="s15">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">Projects &amp; Updates</div>
+    <div class="prow" onclick="openM('m-projects')">
+      <div class="picon" style="background:#dbeafe">📹</div>
+      <div class="pinfo">
+        <div class="ptitle">CCTV Improvements</div>
+        <div class="pdesc">Additional cameras installed at entry gates and parking areas</div>
+        <div class="pbar-bg"><div class="pbar" style="background:var(--blue);width:70%"></div></div>
+      </div>
+      <div class="pright">
+        <div class="pstat" style="background:var(--blue)">In Progress</div>
+        <div class="ppct" style="color:var(--blue)">70%</div>
+      </div>
+    </div>
+    <div class="prow" onclick="openM('m-projects')">
+      <div class="picon" style="background:#dcfce7">🔧</div>
+      <div class="pinfo">
+        <div class="ptitle">Plumbing Repairs</div>
+        <div class="pdesc">Major plumbing overhaul in Blocks A &amp; B — all leakages resolved</div>
+        <div class="pbar-bg"><div class="pbar" style="background:var(--green);width:100%"></div></div>
+      </div>
+      <div class="pright">
+        <div class="pstat" style="background:var(--green)">Completed</div>
+        <div class="ppct" style="color:var(--green)">100%</div>
+      </div>
+    </div>
+    <div class="prow" onclick="openM('m-projects')">
+      <div class="picon" style="background:#fef9c3">⬆</div>
+      <div class="pinfo">
+        <div class="ptitle">Lift Maintenance</div>
+        <div class="pdesc">Quarterly AMC scheduled — both lifts serviced and upgraded</div>
+        <div class="pbar-bg"><div class="pbar" style="background:var(--accent);width:85%"></div></div>
+      </div>
+      <div class="pright">
+        <div class="pstat" style="background:var(--accent)">Ongoing</div>
+        <div class="ppct" style="color:var(--accent)">85%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 17: RESOLUTIONS ════════════════════════════════════════════════ -->
+<div class="slide" id="s16">
+  <div class="topbar" style="background:#0f2040"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody-dark">
+    <div class="stitle-w">⚖️ Resolutions for Approval</div>
+    <div class="rrow" onclick="openM('m-resolutions')">
+      <div class="rnum">R-01</div>
+      <div class="rbody"><div class="rtitle">Property Damage &amp; Penalty Policy</div><div class="rdesc">Approval of formal damage liability and penalty schedule for owners, tenants, and visitors</div></div>
+      <div class="rbadge"><span class="badge" style="background:var(--red);color:#fff">CRITICAL</span></div>
+    </div>
+    <div class="rrow" onclick="openM('m-resolutions')">
+      <div class="rnum">R-02</div>
+      <div class="rbody"><div class="rtitle">Enhanced Security Measures</div><div class="rdesc">Approval to implement digital visitor management and mandatory agent registration protocol</div></div>
+      <div class="rbadge"><span class="badge" style="background:var(--accent);color:#fff">HIGH</span></div>
+    </div>
+    <div class="rrow" onclick="openM('m-resolutions')">
+      <div class="rnum">R-03</div>
+      <div class="rbody"><div class="rtitle">Annual Budget FY 2026-27</div><div class="rdesc">Approval of ₹70 Lakhs estimated budget with 7.7% increase for enhanced security and initiatives</div></div>
+      <div class="rbadge"><span class="badge" style="background:var(--accent);color:#fff">HIGH</span></div>
+    </div>
+    <div class="rrow" onclick="openM('m-resolutions')">
+      <div class="rnum">R-04</div>
+      <div class="rbody"><div class="rtitle">Defaulter Enforcement Protocol</div><div class="rdesc">Approval to initiate legal proceedings against 12 high-value defaulters exceeding ₹50,000 dues</div></div>
+      <div class="rbadge"><span class="badge" style="background:var(--accent);color:#fff">HIGH</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 18: CLOSING ═════════════════════════════════════════════════════ -->
+<div class="slide" id="s17">
+  <div class="closing-slide">
+    <div class="closing-content">
+      <div style="font-size:40px;font-weight:700;color:#fff;margin-bottom:10px">Thank You</div>
+      <div style="color:var(--accent);font-size:13px;margin-bottom:22px">Building a Better Community Together</div>
+      <div class="check-row"><span class="check-icon">✅</span><span style="color:#cadcfc;font-size:12px;font-style:italic">Every resident's participation strengthens our community.</span></div>
+      <div class="check-row"><span class="check-icon">✅</span><span style="color:#cadcfc;font-size:12px;font-style:italic">Transparent governance builds lasting trust.</span></div>
+      <div class="check-row"><span class="check-icon">✅</span><span style="color:#cadcfc;font-size:12px;font-style:italic">Collective responsibility is the foundation of a great society.</span></div>
+      <div style="margin-top:28px;color:#6688aa;font-size:9px">MST Society &nbsp;·&nbsp; Managing Committee &nbsp;·&nbsp; AGM 2026</div>
+    </div>
+    <div style="position:absolute;right:22px;top:50%;transform:translateY(-50%);z-index:3;font-size:60px;opacity:.65">🤝</div>
+  </div>
+</div>
+
+</div><!-- end slide-wrap -->
+
+<!-- ════════════════════════════ MODALS ════════════════════════════════════ -->
+
+<!-- M: Collection Rate -->
+<div class="modal-host" id="m-summary-coll" onclick="bgClose(event,'m-summary-coll')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--green)"><span class="modal-title">💰 Maintenance Collection — Detail</span><button class="mcls" onclick="closeM('m-summary-coll')">×</button></div>
+    <div class="modal-body">
+      <div class="snap-grid">
+        <div class="snap-item"><div class="snap-val" style="color:var(--green)">~90%</div><div class="snap-lbl">Collection Rate</div></div>
+        <div class="snap-item"><div class="snap-val" style="color:var(--red)">~10%</div><div class="snap-lbl">Outstanding</div></div>
+        <div class="snap-item"><div class="snap-val" style="color:var(--navy)">₹31.9L</div><div class="snap-lbl">Maintenance Income</div></div>
+        <div class="snap-item"><div class="snap-val" style="color:var(--accent)">160</div><div class="snap-lbl">Total Flats</div></div>
+      </div>
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#27ae60"></span>Collected 90%</span>
+        <span><span class="mleg-dot" style="background:#c0392b"></span>Pending 10%</span>
+      </div>
+      <div class="ch-wrap" style="height:220px"><canvas id="cColl" role="img" aria-label="Donut chart showing 90% collection vs 10% pending">90% collected, 10% pending.</canvas></div>
+      <div style="font-size:11px;color:var(--slate);margin-top:12px">Collection stands at ~90% — a healthy rate. The 10% outstanding corresponds to the 28 identified defaulters, of whom 12 have dues exceeding ₹50,000.</div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Key Concerns -->
+<div class="modal-host" id="m-summary-concerns" onclick="bgClose(event,'m-summary-concerns')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--red)"><span class="modal-title">⚠️ Key Concerns — Detail</span><button class="mcls" onclick="closeM('m-summary-concerns')">×</button></div>
+    <div class="modal-body">
+      <div style="margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:5px">1. Unauthorized Access</div><div style="font-size:11px;color:var(--slate)">Unregistered brokers, agents, and visitors freely entering premises without verification. Gate logs show gaps in recording visitor details, creating a security risk for all 160 households.</div></div>
+      <div style="border-top:.5px solid #eee;padding-top:12px"><div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:5px">2. Property Damage</div><div style="font-size:11px;color:var(--slate)">Lift damage during heavy shifting and parking violations leading to vehicle damage. The cost of repairs is being shared by all residents even when caused by a single individual — addressed in R-01.</div></div>
+      <div class="alert-box" style="background:#fff3cd;margin-top:12px"><div style="font-size:10px;font-weight:700;color:var(--accent)">AGM ACTION REQUIRED</div><div style="font-size:10px;color:var(--navy);margin-top:3px">Both concerns are addressed through Resolutions R-01 and R-02 on today's agenda.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- M: 3 Pillars -->
+<div class="modal-host" id="m-summary-pillars" onclick="bgClose(event,'m-summary-pillars')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--blue)"><span class="modal-title">🛡️ Three Priority Pillars</span><button class="mcls" onclick="closeM('m-summary-pillars')">×</button></div>
+    <div class="modal-body">
+      <div class="srow" style="margin-bottom:12px"><div class="snum" style="background:var(--navy);min-height:70px">1</div><div class="srbody"><div class="srtitle">Security</div><div class="srdesc" style="font-size:11px">Digital visitor management, CCTV upgrade, agent registration, and flat-level access controls to prevent unauthorized entry and protect all residents.</div></div></div>
+      <div class="srow" style="margin-bottom:12px"><div class="snum" style="background:var(--green);min-height:70px">2</div><div class="srbody"><div class="srtitle">Financial Discipline</div><div class="srdesc" style="font-size:11px">Enforce timely maintenance payments, levy penalties on defaulters, and maintain a transparent budget. ₹37L is already secured in Fixed Deposit.</div></div></div>
+      <div class="srow"><div class="snum" style="background:var(--accent);min-height:70px">3</div><div class="srbody"><div class="srtitle">Governance</div><div class="srdesc" style="font-size:11px">Formal policies for damage liability, penalty schedules, and resident compliance — ensuring every resident is treated fairly under the same rules.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Finance Overview Chart -->
+<div class="modal-host" id="m-finance" onclick="bgClose(event,'m-finance')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">₹ Financial Overview — Full Detail</span><button class="mcls" onclick="closeM('m-finance')">×</button></div>
+    <div class="modal-body">
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#2a78d6"></span>Income</span>
+        <span><span class="mleg-dot" style="background:#c0392b"></span>Expenses</span>
+      </div>
+      <div class="ch-wrap" style="height:240px"><canvas id="cFinBar" role="img" aria-label="Bar chart comparing total income vs expenses for MST Society FY 2025-26">Sept ₹1.05Cr, Oct ₹54.3L, Nov ₹73.5L.</canvas></div>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">Sept</span><span class="iv" style="color:var(--blue)">₹1,05,43,375</span></div>
+        <div class="info-row"><span class="il">Oct</span><span class="iv" style="color:var(--red)">₹54,32,947</span></div>
+        <div class="info-row"><span class="il">Nov</span><span class="iv" style="color:var(--accent)">₹73,48,454</span></div>
+        <div class="info-row"><span class="il">Dec</span><span class="iv" style="color:var(--mid)">₹31,94,921</span></div>
+        <div class="info-row"><span class="il">Jan</span><span class="iv" style="color:var(--green)">₹37,00,000</span></div>
+        <div class="info-row"><span class="il">Feb</span><span class="iv">₹5L (approx.)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Maintenance Expense Breakdown -->
+<div class="modal-host" id="m-maint-exp" onclick="bgClose(event,'m-maint-exp')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">📊 Maintenance Expense Breakdown</span><button class="mcls" onclick="closeM('m-maint-exp')">×</button></div>
+    <div class="modal-body">
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#1a2f5e"></span>Service</span>
+        <span><span class="mleg-dot" style="background:#2e6db4"></span>Electricity</span>
+        <span><span class="mleg-dot" style="background:#4a90d9"></span>Utility</span>
+        <span><span class="mleg-dot" style="background:#e8a020"></span>AMC</span>
+        <span><span class="mleg-dot" style="background:#9ca3af"></span>Other</span>
+      </div>
+      <div class="ch-wrap" style="height:250px"><canvas id="cMaintPieM" role="img" aria-label="Pie chart of maintenance expense categories. Each category accounts for approximately 20% of total.">Service, Electricity, Utility, AMC, Other — approx. 20% each.</canvas></div>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">🔧 Service</span><span class="iv" style="color:var(--navy)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">⚡ Electricity</span><span class="iv" style="color:var(--mid)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">💧 Utility</span><span class="iv" style="color:var(--sky)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">📋 AMC</span><span class="iv" style="color:var(--accent)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">📁 Other</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- M: MAINTENANCE Service Expense Breakdown -->
+<div class="modal-host" id="m-maint-service-exp" onclick="bgClose(event,'m-maint-service-exp')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">📊 Maintenance Expense Breakdown</span><button class="mcls" onclick="closeM('m-maint-service-exp')">×</button></div>
+    <div class="modal-body">
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#0D2B55"></span>Security</span>
+        <span><span class="mleg-dot" style="background:#1A4480"></span>Security (Common)</span>
+        <span><span class="mleg-dot" style="background:#2563A8"></span>Housekeeping</span>
+        <span><span class="mleg-dot" style="background:#3B82C4"></span>Housekeeping (Common)</span>
+        <span><span class="mleg-dot" style="background:#5BA3D9"></span>Pest Control</span>
+        <span><span class="mleg-dot" style="background:#8EC4E8"></span>Garbage Collection</span>
+        <span><span class="mleg-dot" style="background:#D4EDFC"></span>STP</span>
+        <span><span class="mleg-dot" style="background:#E8A020"></span>WTP</span>
+        <span><span class="mleg-dot" style="background:#C47D10"></span>Swimming Pool</span>
+        <span><span class="mleg-dot" style="background:#9A5D08"></span>Plumber</span>
+        <span><span class="mleg-dot" style="background:#6B3E05"></span>Electrician</span>
+      </div>
+      <div class="ch-wrap" style="height:250px"><canvas id="cMaintServicePieM" role="img" aria-label="Pie chart of maintenance expense categories. Each category accounts for approximately 20% of total.">Security, Housekeeping, Pest Control, Garbage Collection, Legal</canvas></div>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">Security</span><span class="iv" style="color:var(--navy)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Security (Common)</span><span class="iv" style="color:var(--mid)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Housekeeping</span><span class="iv" style="color:var(--sky)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Housekeeping (Common)</span><span class="iv" style="color:var(--accent)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Pest Control</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Garbage Collection</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">STP</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">WTP</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Swimming Pool</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Plumber</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Electrician</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- M: MAINTENANCE Electricity Expense Breakdown -->
+<div class="modal-host" id="m-maint-electricity-exp" onclick="bgClose(event,'m-maint-electricity-exp')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">📊 Maintenance Expense Breakdown</span><button class="mcls" onclick="closeM('m-maint-electricity-exp')">×</button></div>
+    <div class="modal-body">
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#0D2B55"></span>D Building</span>
+        <span><span class="mleg-dot" style="background:#1A4480"></span>Fire Pump (Common)</span>
+        <span><span class="mleg-dot" style="background:#2563A8"></span>STP (Common)</span>
+        <span><span class="mleg-dot" style="background:#3B82C4"></span>Water Pump (Common)</span>
+        <span><span class="mleg-dot" style="background:#5BA3D9"></span>Ameneties (Common)</span>
+        <span><span class="mleg-dot" style="background:#8EC4E8"></span>Electrician (Common)</span>
+      </div>
+      <div class="ch-wrap" style="height:250px"><canvas id="cMaintElectricityPieM" role="img" aria-label="Pie chart of maintenance expense categories. Each category accounts for approximately 20% of total.">Security, Housekeeping, Pest Control, Garbage Collection, Legal</canvas></div>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">D Building</span><span class="iv" style="color:var(--navy)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Fire Pump (Common)</span><span class="iv" style="color:var(--mid)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">STP (Common)</span><span class="iv" style="color:var(--sky)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Water Pump (Common)</span><span class="iv" style="color:var(--accent)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Ameneties (Common)</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Electrician (Common)</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- M: MAINTENANCE Utility Expense Breakdown -->
+<div class="modal-host" id="m-maint-utility-exp" onclick="bgClose(event,'m-maint-utility-exp')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">📊 Maintenance Expense Breakdown</span><button class="mcls" onclick="closeM('m-maint-utility-exp')">×</button></div>
+    <div class="modal-body">
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#0D2B55"></span>Stationary</span>
+      </div>
+      <div class="ch-wrap" style="height:250px"><canvas id="cMaintElectricityPieM" role="img" aria-label="Pie chart of maintenance expense categories. Each category accounts for approximately 20% of total.">Security, Housekeeping, Pest Control, Garbage Collection, Legal</canvas></div>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">Stationary</span><span class="iv" style="color:var(--navy)">₹9000 &nbsp;(32%)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- M: MAINTENANCE AMC Expense Breakdown -->
+<div class="modal-host" id="m-maint-amc-exp" onclick="bgClose(event,'m-maint-amc-exp')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">📊 Maintenance AMC Breakdown</span><button class="mcls" onclick="closeM('m-maint-amc-exp')">×</button></div>
+    <div class="modal-body">
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#0D2B55"></span>MyGate</span>
+        <span><span class="mleg-dot" style="background:#1A4480"></span>Fire Safety</span>
+        <span><span class="mleg-dot" style="background:#2563A8"></span>Lift</span>
+        <span><span class="mleg-dot" style="background:#3B82C4"></span>Audit</span>
+      </div>
+      <div class="ch-wrap" style="height:250px"><canvas id="cMaintAmcPieM" role="img" aria-label="Pie chart of maintenance expense categories. Each category accounts for approximately 20% of total.">MyGate, Fire Safety, Lift, Audit</canvas></div>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">MyGate</span><span class="iv" style="color:var(--navy)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Fire Safety</span><span class="iv" style="color:var(--mid)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Lift</span><span class="iv" style="color:var(--sky)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Audit</span><span class="iv" style="color:var(--accent)">₹19.2L &nbsp;(32%)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- M: MAINTENANCE Other Expense Breakdown -->
+<div class="modal-host" id="m-maint-other-exp" onclick="bgClose(event,'m-maint-other-exp')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">📊 Maintenance Expense Breakdown</span><button class="mcls" onclick="closeM('m-maint-other-exp')">×</button></div>
+    <div class="modal-body">
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#0D2B55"></span>Cultural Fund</span>
+        <span><span class="mleg-dot" style="background:#1A4480"></span>Legal</span>
+        <span><span class="mleg-dot" style="background:#2563A8"></span>Salaries</span>
+        <span><span class="mleg-dot" style="background:#3B82C4"></span>STP Water Tank Cleaning</span>
+        <span><span class="mleg-dot" style="background:#5BA3D9"></span>Miscellaneous</span>
+      </div>
+      <div class="ch-wrap" style="height:250px"><canvas id="cMaintOtherPieM" role="img" aria-label="Pie chart of maintenance expense categories. Each category accounts for approximately 20% of total.">Security, Housekeeping, Pest Control, Garbage Collection, Legal</canvas></div>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">Cultural Fund</span><span class="iv" style="color:var(--navy)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Legal</span><span class="iv" style="color:var(--mid)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Salaries</span><span class="iv" style="color:var(--sky)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">STP Water Tank Cleaning</span><span class="iv" style="color:var(--accent)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Miscellaneous</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- M: D Service Expense Breakdown -->
+<div class="modal-host" id="m-d-service-exp" onclick="bgClose(event,'m-d-service-exp')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">📊 Maintenance Expense Breakdown</span><button class="mcls" onclick="closeM('m-d-service-exp')">×</button></div>
+    <div class="modal-body">
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#1a2f5e"></span>Security</span>
+        <span><span class="mleg-dot" style="background:#2e6db4"></span>Housekeeping</span>
+        <span><span class="mleg-dot" style="background:#4a90d9"></span>Pest Control</span>
+        <span><span class="mleg-dot" style="background:#e8a020"></span>Garbage Collection</span>
+        <span><span class="mleg-dot" style="background:#9ca3af"></span>Legal</span>
+      </div>
+      <div class="ch-wrap" style="height:250px"><canvas id="cMaintServicePieM" role="img" aria-label="Pie chart of maintenance expense categories. Each category accounts for approximately 20% of total.">Security, Housekeeping, Pest Control, Garbage Collection, Legal</canvas></div>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">Security</span><span class="iv" style="color:var(--navy)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Housekeeping</span><span class="iv" style="color:var(--mid)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Pest Control</span><span class="iv" style="color:var(--sky)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Garbage Collection</span><span class="iv" style="color:var(--accent)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">Legal</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- M: D Building vs Common -->
+<div class="modal-host" id="m-bldg-common" onclick="bgClose(event,'m-bldg-common')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">🏢 D Building vs Common Expenses</span><button class="mcls" onclick="closeM('m-bldg-common')">×</button></div>
+    <div class="modal-body">
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#1e4d8c"></span>D Building 56%</span>
+        <span><span class="mleg-dot" style="background:#2e6db4"></span>Common 44%</span>
+      </div>
+      <div class="ch-wrap" style="height:200px"><canvas id="cBldgPie" role="img" aria-label="Pie chart showing D Building at 56% and Common at 44% of total expenses">D Building ₹59.7L (56%), Common ₹46.9L (44%).</canvas></div>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">D Building — Annual</span><span class="iv" style="color:var(--blue)">₹59,74,945</span></div>
+        <div class="info-row"><span class="il">D Building — Monthly</span><span class="iv" style="color:var(--blue)">₹4,97,308</span></div>
+        <div class="info-row"><span class="il">Common — Annual</span><span class="iv" style="color:var(--mid)">₹46,93,193</span></div>
+        <div class="info-row"><span class="il">Common — Monthly</span><span class="iv" style="color:var(--mid)">₹3,91,099</span></div>
+        <div class="info-row"><span class="il" style="font-weight:700">Total — Annual</span><span class="iv">₹1,06,68,138</span></div>
+        <div class="info-row"><span class="il" style="font-weight:700">Total — Monthly</span><span class="iv">₹8,88,407</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- M: D Exp (slide 6) -->
+<div class="modal-host" id="m-d-exp" onclick="bgClose(event,'m-d-exp')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--blue)"><span class="modal-title">📊 D Building Expense — Breakdown</span><button class="mcls" onclick="closeM('m-d-exp')">×</button></div>
+    <div class="modal-body">
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#1a2f5e"></span>Service</span>
+        <span><span class="mleg-dot" style="background:#2e6db4"></span>Electricity</span>
+        <span><span class="mleg-dot" style="background:#4a90d9"></span>Utility</span>
+        <span><span class="mleg-dot" style="background:#e8a020"></span>AMC</span>
+        <span><span class="mleg-dot" style="background:#9ca3af"></span>Other</span>
+      </div>
+      <div class="ch-wrap" style="height:240px"><canvas id="cDExpPieM" role="img" aria-label="Pie chart of D building specific expense breakdown">D Building: Service, Electricity, Utility, AMC, Other — each approx. 20%.</canvas></div>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">🔧 Service</span><span class="iv" style="color:var(--navy)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">⚡ Electricity</span><span class="iv" style="color:var(--mid)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">💧 Utility</span><span class="iv" style="color:var(--sky)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">📋 AMC</span><span class="iv" style="color:var(--accent)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">📁 Other</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Common Exp (slide 7) -->
+<div class="modal-host" id="m-common-exp" onclick="bgClose(event,'m-common-exp')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--mid)"><span class="modal-title">📊 Common Area Expense — Breakdown</span><button class="mcls" onclick="closeM('m-common-exp')">×</button></div>
+    <div class="modal-body">
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#1a2f5e"></span>Service</span>
+        <span><span class="mleg-dot" style="background:#2e6db4"></span>Electricity</span>
+        <span><span class="mleg-dot" style="background:#4a90d9"></span>Utility</span>
+        <span><span class="mleg-dot" style="background:#e8a020"></span>AMC</span>
+        <span><span class="mleg-dot" style="background:#9ca3af"></span>Other</span>
+      </div>
+      <div class="ch-wrap" style="height:240px"><canvas id="cCommonPieM" role="img" aria-label="Pie chart of common area expense breakdown">Common: Service, Electricity, Utility, AMC, Other — each approx. 20%.</canvas></div>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">🔧 Service</span><span class="iv" style="color:var(--navy)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">⚡ Electricity</span><span class="iv" style="color:var(--mid)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">💧 Utility</span><span class="iv" style="color:var(--sky)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">📋 AMC</span><span class="iv" style="color:var(--accent)">₹19.2L &nbsp;(32%)</span></div>
+        <div class="info-row"><span class="il">📁 Other</span><span class="iv" style="color:#9ca3af">₹19.2L &nbsp;(32%)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Defaulters -->
+<div class="modal-host" id="m-defaulters" onclick="bgClose(event,'m-defaulters')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--red)"><span class="modal-title">📋 Defaulters — Full Analysis</span><button class="mcls" onclick="closeM('m-defaulters')">×</button></div>
+    <div class="modal-body">
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#4a90d9"></span>Below ₹25k</span>
+        <span><span class="mleg-dot" style="background:#e8a020"></span>₹25k–₹50k</span>
+        <span><span class="mleg-dot" style="background:#c0392b"></span>Above ₹50k</span>
+      </div>
+      <div class="ch-wrap" style="height:200px"><canvas id="cDefBar" role="img" aria-label="Bar chart of defaulters by due amount category: below 25k, 25k-50k, above 50k">Below ₹25k: 10. ₹25k-50k: 6. Above ₹50k: 12 defaulters.</canvas></div>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">Total defaulters</span><span class="iv" style="color:var(--red)">28 flats</span></div>
+        <div class="info-row"><span class="il">High-value (&gt;₹50,000)</span><span class="iv" style="color:var(--navy)">12 flats</span></div>
+        <div class="info-row"><span class="il">Mid-range (₹25k–₹50k)</span><span class="iv">6 flats</span></div>
+        <div class="info-row"><span class="il">Below ₹25,000</span><span class="iv">10 flats</span></div>
+        <div class="info-row"><span class="il">Estimated pending dues</span><span class="iv" style="color:var(--accent)">₹8L+</span></div>
+      </div>
+      <div class="alert-box" style="background:#fff3cd;font-size:10px;color:var(--navy)">Legal notices will be issued to all 12 high-value defaulters. Resolution R-04 seeks formal committee approval to proceed.</div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Issues -->
+<div class="modal-host" id="m-issues" onclick="bgClose(event,'m-issues')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">⚠️ Key Issues — Full Detail</span><button class="mcls" onclick="closeM('m-issues')">×</button></div>
+    <div class="modal-body">
+      <div class="info-row"><span class="il" style="font-weight:700">👥 Unauthorized Brokers</span><span class="badge" style="background:#fee2e2;color:var(--red)">Critical</span></div>
+      <div style="font-size:10px;color:var(--slate);margin:4px 0 12px">Multiple unregistered agents entering premises. No ID verification, no entry log. Solution: mandatory agent registration (R-02).</div>
+      <div class="info-row"><span class="il" style="font-weight:700">⬆ Lift Misuse</span><span class="badge" style="background:#fff3cd;color:#92400e">High</span></div>
+      <div style="font-size:10px;color:var(--slate);margin:4px 0 12px">Lift panels and doors damaged during shifting. Repair cost shared by all. Policy: mandatory deposit + penalty (R-01).</div>
+      <div class="info-row"><span class="il" style="font-weight:700">🚗 Parking Violations</span><span class="badge" style="background:#fff3cd;color:#92400e">High</span></div>
+      <div style="font-size:10px;color:var(--slate);margin:4px 0 12px">Multiple complaints filed in FY25-26. Unauthorized use of visitor bays, boundary encroachments, and vehicle scratches reported.</div>
+      <div class="info-row"><span class="il" style="font-weight:700">🛡 Security Gaps</span><span class="badge" style="background:#fff3cd;color:#92400e">High</span></div>
+      <div style="font-size:10px;color:var(--slate);margin:4px 0">Strangers found on premises without valid entry. CCTV blind spots identified at rear gate and wing staircases.</div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Initiatives -->
+<div class="modal-host" id="m-initiatives" onclick="bgClose(event,'m-initiatives')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--blue)"><span class="modal-title">🚀 Future Initiatives — Full Plan</span><button class="mcls" onclick="closeM('m-initiatives')">×</button></div>
+    <div class="modal-body">
+      <div style="margin-bottom:13px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><span class="badge" style="background:var(--lt);color:var(--blue)">FY 2026-27</span><span style="font-size:12px;font-weight:700;color:var(--navy)">📱 Society Mobile App</span></div><div style="font-size:10px;color:var(--slate)">Complaint portal, maintenance payment gateway, gate pass requests, society notices, and emergency alerts. Vendor evaluation underway. Est. ₹2.5L implementation.</div></div>
+      <div style="border-top:.5px solid #eee;padding-top:12px;margin-bottom:13px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><span class="badge" style="background:var(--lt);color:var(--blue)">FY 2026-27</span><span style="font-size:12px;font-weight:700;color:var(--navy)">🔒 Smart Access Control</span></div><div style="font-size:10px;color:var(--slate)">RFID stickers for all registered vehicles. Boom barrier with automatic number plate recognition. Real-time access logs. Est. ₹4.5L setup + ₹60k/year maintenance.</div></div>
+      <div style="border-top:.5px solid #eee;padding-top:12px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><span class="badge" style="background:#dcfce7;color:var(--green)">Under Review</span><span style="font-size:12px;font-weight:700;color:var(--navy)">☀️ Solar Feasibility Study</span></div><div style="font-size:10px;color:var(--slate)">Roof survey commissioned. Estimated 40kW system could save ₹3.6L/year on common area electricity. Report expected Q3 FY2026-27.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Maint Exp2 (slide 11 variant) -->
+<div class="modal-host" id="m-maint-exp2" onclick="bgClose(event,'m-maint-exp2')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">📊 Maintenance Expense — Bar View</span><button class="mcls" onclick="closeM('m-maint-exp2')">×</button></div>
+    <div class="modal-body">
+      <div class="ch-wrap" style="height:260px"><canvas id="cMaintBarM" role="img" aria-label="Horizontal bar chart of maintenance expenses by category">Service ₹19.2L, Electricity ₹19.2L, Utility ₹19.2L, AMC ₹19.2L, Other ₹19.2L.</canvas></div>
+      <div class="info-row" style="margin-top:10px"><span class="il">Total Maintenance Expenses</span><span class="iv">₹96L (approx.)</span></div>
+      <div class="info-row"><span class="il">Per Category (equal split shown)</span><span class="iv">₹19.2L each</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Bldg Common 2 -->
+<div class="modal-host" id="m-bldg-common2" onclick="bgClose(event,'m-bldg-common2')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">🏢 D Building vs Common — Bar Chart</span><button class="mcls" onclick="closeM('m-bldg-common2')">×</button></div>
+    <div class="modal-body">
+      <div class="mleg">
+        <span><span class="mleg-dot" style="background:#1e4d8c"></span>D Building</span>
+        <span><span class="mleg-dot" style="background:#2e6db4"></span>Common</span>
+      </div>
+      <div class="ch-wrap" style="height:200px"><canvas id="cBldgBarM" role="img" aria-label="Grouped bar chart comparing D Building vs Common expenses in lakhs">D Building: ₹59.7L. Common: ₹46.9L. Total: ₹1.07Cr.</canvas></div>
+      <div class="info-row" style="margin-top:10px"><span class="il">D Building Annual</span><span class="iv" style="color:var(--blue)">₹59,74,945</span></div>
+      <div class="info-row"><span class="il">Common Annual</span><span class="iv" style="color:var(--mid)">₹46,93,193</span></div>
+      <div class="info-row"><span class="il">Grand Total</span><span class="iv">₹1,06,68,138</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Maintenance Charges -->
+<div class="modal-host" id="m-charges" onclick="bgClose(event,'m-charges')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">₹ Maintenance Charges — Full Table</span><button class="mcls" onclick="closeM('m-charges')">×</button></div>
+    <div class="modal-body">
+      <table class="charge-table">
+        <thead><tr><th>Category</th><th>Current</th><th>New</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td>Residing Owner</td><td>₹5,500</td><td class="highlight">₹7,100</td><td style="color:var(--green);font-weight:700">+₹1,600</td></tr>
+          <tr><td>Rented Unit</td><td>₹5,700</td><td class="highlight">₹7,400</td><td style="color:var(--green);font-weight:700">+₹1,700</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">Avg. increase per flat</span><span class="iv" style="color:var(--green)">₹1,700 (22.5%)</span></div>
+        <div class="info-row"><span class="il">Fixed Deposit — Surplus</span><span class="iv" style="color:var(--blue)">₹37,00,000</span></div>
+        <div class="info-row"><span class="il">FD Status</span><span class="iv" style="color:var(--green)">Healthy</span></div>
+      </div>
+      <div class="alert-box" style="background:#d4edda;font-size:10px;color:#155724;margin-top:12px">The new maintenance charges reflect increased operational costs and enhanced security measures for FY 2026-27.</div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Security Plan -->
+<div class="modal-host" id="m-security" onclick="bgClose(event,'m-security')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">🔒 Security Plan — Full Detail</span><button class="mcls" onclick="closeM('m-security')">×</button></div>
+    <div class="modal-body">
+      <div class="srow" style="margin-bottom:10px"><div class="snum" style="background:var(--blue);min-height:70px">01</div><div class="srbody"><div class="srtitle">Digital Visitor Management</div><div class="srdesc" style="font-size:11px">App-based pre-approval, OTP gate entry, digital logbook. Est. ₹1.2L one-time setup, ₹30k/year. Covered in FY26-27 budget.</div></div></div>
+      <div class="srow" style="margin-bottom:10px"><div class="snum" style="background:var(--mid);min-height:70px">02</div><div class="srbody"><div class="srtitle">Agent Registration Protocol</div><div class="srdesc" style="font-size:11px">Brokers/agents must submit ID, agency details, and flat owner NOC. Access badge issued valid for 30 days. Non-compliance = entry refusal.</div></div></div>
+      <div class="srow" style="margin-bottom:10px"><div class="snum" style="background:var(--navy);min-height:70px">03</div><div class="srbody"><div class="srtitle">Flat-Level Access Restriction</div><div class="srdesc" style="font-size:11px">48-hour notice required for shifting or renovation. Deposit of ₹5,000 payable at management office before work commencement.</div></div></div>
+      <div class="srow"><div class="snum" style="background:var(--sky);min-height:70px">04</div><div class="srbody"><div class="srtitle">24/7 CCTV Monitoring</div><div class="srdesc" style="font-size:11px">8 new cameras to be installed. Remote monitoring via security app. 30-day cloud storage for footage. Est. ₹2.4L upgrade (in progress).</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Policy -->
+<div class="modal-host" id="m-policy" onclick="bgClose(event,'m-policy')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">⚠️ Damage &amp; Penalty Policy — Full</span><button class="mcls" onclick="closeM('m-policy')">×</button></div>
+    <div class="modal-body">
+      <div class="quote-banner"><p>" Damage by one cannot be paid by all "</p></div>
+      <div class="info-row"><span class="il">Owner liability</span><span class="iv">Full for tenant/visitor/contractor damage</span></div>
+      <div class="info-row"><span class="il">Shifting deposit</span><span class="iv">₹5,000 (refundable)</span></div>
+      <div class="info-row"><span class="il">Lift damage penalty</span><span class="iv" style="color:var(--red)">₹5,000 minimum</span></div>
+      <div class="info-row"><span class="il">Structural damage</span><span class="iv" style="color:var(--red)">₹25,000+</span></div>
+      <div class="info-row"><span class="il">Renovation notice period</span><span class="iv">48 hours mandatory</span></div>
+      <div class="info-row"><span class="il">Permitted shifting hours</span><span class="iv">9 AM – 6 PM only</span></div>
+      <div class="alert-box" style="background:#fee2e2;font-size:10px;color:var(--red);font-weight:600;margin-top:12px">This policy is proposed Resolution R-01 and requires AGM approval to become binding on all 160 flat owners and tenants.</div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Projects -->
+<div class="modal-host" id="m-projects" onclick="bgClose(event,'m-projects')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:var(--navy)"><span class="modal-title">🔨 Projects — Full Status</span><button class="mcls" onclick="closeM('m-projects')">×</button></div>
+    <div class="modal-body">
+      <div class="ch-wrap" style="height:200px"><canvas id="cProjBar" role="img" aria-label="Horizontal bar chart of project completion percentages: CCTV 70%, Plumbing 100%, Lift 85%">CCTV 70%, Plumbing 100%, Lift Maintenance 85%.</canvas></div>
+      <div style="margin-top:14px">
+        <div class="info-row"><span class="il">📹 CCTV — Budget</span><span class="iv">₹2.4L (₹1.68L spent)</span></div>
+        <div class="info-row"><span class="il">📹 CCTV — ETA</span><span class="iv">Sept 2026</span></div>
+        <div class="info-row"><span class="il">🔧 Plumbing — Status</span><span class="iv" style="color:var(--green)">✓ Completed (₹3.2L)</span></div>
+        <div class="info-row"><span class="il">⬆ Lift AMC — Annual</span><span class="iv">₹1.8L/year</span></div>
+        <div class="info-row"><span class="il">⬆ Lift — Next Service</span><span class="iv">Oct 2026</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- M: Resolutions -->
+<div class="modal-host" id="m-resolutions" onclick="bgClose(event,'m-resolutions')">
+  <div class="modal-box">
+    <div class="modal-hdr" style="background:#0f2040"><span class="modal-title">⚖️ Resolutions — Full Text</span><button class="mcls" onclick="closeM('m-resolutions')">×</button></div>
+    <div class="modal-body">
+      <div style="margin-bottom:14px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span class="badge" style="background:var(--red);color:#fff">R-01 · CRITICAL</span><span style="font-size:12px;font-weight:700;color:var(--navy)">Property Damage &amp; Penalty Policy</span></div><div style="font-size:10px;color:var(--slate)">Resolved that MST Society formally adopts the Property Damage Liability Policy including penalty schedule for lift damage (min. ₹5,000), structural damage (min. ₹25,000), and mandatory shifting deposits of ₹5,000.</div></div>
+      <div style="border-top:.5px solid #eee;padding-top:12px;margin-bottom:14px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span class="badge" style="background:var(--accent);color:#fff">R-02 · HIGH</span><span style="font-size:12px;font-weight:700;color:var(--navy)">Enhanced Security Measures</span></div><div style="font-size:10px;color:var(--slate)">Resolved to implement digital visitor management and mandatory broker/agent registration effective 1 August 2026, with full compliance from all flat owners within 30 days.</div></div>
+      <div style="border-top:.5px solid #eee;padding-top:12px;margin-bottom:14px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span class="badge" style="background:var(--accent);color:#fff">R-03 · HIGH</span><span style="font-size:12px;font-weight:700;color:var(--navy)">Annual Budget FY 2026-27</span></div><div style="font-size:10px;color:var(--slate)">Resolved to approve the proposed budget of ₹70 Lakhs for FY 2026-27 (7.7% increase), covering enhanced security, CCTV upgrade, mobile app implementation, and routine maintenance.</div></div>
+      <div style="border-top:.5px solid #eee;padding-top:12px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span class="badge" style="background:var(--accent);color:#fff">R-04 · HIGH</span><span style="font-size:12px;font-weight:700;color:var(--navy)">Defaulter Enforcement Protocol</span></div><div style="font-size:10px;color:var(--slate)">Resolved to authorise the Managing Committee to issue legal notices and initiate recovery proceedings against 12 identified high-value defaulters with outstanding dues exceeding ₹50,000.</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+var cur=0,total=18,rendered={};
+function go(n){
+  document.querySelectorAll('.slide').forEach(function(s){s.classList.remove('on')});
+  document.querySelectorAll('.snav').forEach(function(b){b.classList.remove('active')});
+  document.getElementById('s'+n).classList.add('on');
+  document.querySelectorAll('.snav')[n].classList.add('active');
+  document.getElementById('ctr').textContent=(n+1)+' / '+total;
+  cur=n;
+  renderSlideCharts(n);
+}
+function next(){go(Math.min(cur+1,total-1))}
+function prev(){go(Math.max(cur-1,0))}
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev()});
+
+function openM(id){document.getElementById(id).classList.add('open');renderModalChart(id)}
+function closeM(id){document.getElementById(id).classList.remove('open')}
+function bgClose(e,id){if(e.target.id===id)closeM(id)}
+
+var PIE_COLORS=['#1a2f5e','#2e6db4','#4a90d9','#e8a020','#9ca3af'];
+var PIE_LABELS=['Service','Electricity','Utility','AMC','Other'];
+var D_SERVICE_PIE_LABELS=['Service','Housekeeping','Pest Control','Garbage Collection','Legal'];
+
+var SERVICE_PIE_LABELS=['Security','Security (Common)','Housekeeping','Housekeeping (Common)','Pest Control','Garbage Collection','Legal','STP','WTP','Swimming Pool','Plumber','Electrician'];
+var SERVICE_PIE_DATA=[32,32,32,32,32,5,5,5,5,5,5,5];
+var SERVICE_PIE_COLORS=['#1a2f5e','#2e6db4','#4a90d9','#e8a020','#9ca3af'];
+
+
+var PIE_DATA=[32,32,32,32,32];
+
+function makeChart(id,cfg){if(!document.getElementById(id))return;var c=new Chart(document.getElementById(id),cfg);return c}
+
+function renderSlideCharts(n){
+  if(rendered['s'+n])return;rendered['s'+n]=true;
+  if(n===3){
+    makeChart('cMaintPie',{type:'pie',data:{labels:PIE_LABELS,datasets:[{data:PIE_DATA,backgroundColor:PIE_COLORS,borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+  }
+  if(n===5){
+    makeChart('cDExpPie',{type:'pie',data:{labels:PIE_LABELS,datasets:[{data:PIE_DATA,backgroundColor:PIE_COLORS,borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+  }
+  if(n===6){
+    makeChart('cCommonPie',{type:'pie',data:{labels:PIE_LABELS,datasets:[{data:PIE_DATA,backgroundColor:PIE_COLORS,borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+  }
+  if(n===10){
+    makeChart('cMaintBar',{type:'bar',data:{labels:PIE_LABELS,datasets:[{label:'Amount (L)',data:[19.2,19.2,19.2,19.2,19.2],backgroundColor:PIE_COLORS,borderRadius:4}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:'#e2e8f0'},ticks:{callback:function(v){return'₹'+v+'L'}}},y:{grid:{display:false}}}}});
+  }
+  if(n===11){
+    makeChart('cBldgBar',{type:'bar',data:{labels:['D Building','Common'],datasets:[{label:'Annual Expense (L)',data:[59.7,46.9],backgroundColor:['#1e4d8c','#2e6db4'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#e2e8f0'},ticks:{callback:function(v){return'₹'+v+'L'}}},x:{grid:{display:false}}}}});
+  }
+}
+
+function renderModalChart(id){
+  if(rendered['m_'+id])return;rendered['m_'+id]=true;
+  if(id==='m-summary-coll'){
+    makeChart('cColl',{type:'doughnut',data:{labels:['Collected','Pending'],datasets:[{data:[90,10],backgroundColor:['#27ae60','#c0392b'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+  }
+  if(id==='m-finance'){
+    makeChart('cFinBar',{type:'bar',data:{labels:['Sept','Oct','Nov','Dec','Jan','Feb', 'Mar'],datasets:[{label:'₹ Lakhs',data:[105.4,54.3,73.5,31.9,15,54,5],backgroundColor:['#2a78d6','#2a78d6','#2a78d6','#2a78d6','#2a78d6','#2a78d6','#2a78d6'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#e2e8f0'},ticks:{callback:function(v){return'₹'+v+'L'}}},x:{grid:{display:false}}}}});
+  }
+  if(id==='m-maint-exp'){
+    makeChart('cMaintPieM',{type:'pie',data:{labels:PIE_LABELS,datasets:[{data:PIE_DATA,backgroundColor:PIE_COLORS,borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+  }
+  if(id==='m-maint-service-exp'){
+    makeChart('cMaintServicePieM',{type:'pie',data:{labels:SERVICE_PIE_LABELS,datasets:[{data:SERVICE_PIE_DATA,backgroundColor:PIE_COLORS,borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+  }
+  if(id==='m-bldg-common'){
+    makeChart('cBldgPie',{type:'pie',data:{labels:['D Building (56%)','Common (44%)'],datasets:[{data:[56,44],backgroundColor:['#1e4d8c','#2e6db4'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+  }
+  if(id==='m-d-exp'){
+    makeChart('cDExpPieM',{type:'pie',data:{labels:PIE_LABELS,datasets:[{data:PIE_DATA,backgroundColor:PIE_COLORS,borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+  }
+  if(id==='m-common-exp'){
+    makeChart('cCommonPieM',{type:'pie',data:{labels:PIE_LABELS,datasets:[{data:PIE_DATA,backgroundColor:PIE_COLORS,borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+  }
+  if(id==='m-defaulters'){
+    makeChart('cDefBar',{type:'bar',data:{labels:['Below ₹25k','₹25k–₹50k','Above ₹50k'],datasets:[{label:'Flats',data:[10,6,12],backgroundColor:['#4a90d9','#e8a020','#c0392b'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#e2e8f0'},ticks:{stepSize:2}},x:{grid:{display:false}}}}});
+  }
+  if(id==='m-maint-exp2'){
+    makeChart('cMaintBarM',{type:'bar',data:{labels:PIE_LABELS,datasets:[{label:'Amount (L)',data:[19.2,19.2,19.2,19.2,19.2],backgroundColor:PIE_COLORS,borderRadius:4}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:'#e2e8f0'},ticks:{callback:function(v){return'₹'+v+'L'}}},y:{grid:{display:false}}}}});
+  }
+  if(id==='m-bldg-common2'){
+    makeChart('cBldgBarM',{type:'bar',data:{labels:['D Building','Common'],datasets:[{label:'₹ Lakhs',data:[59.7,46.9],backgroundColor:['#1e4d8c','#2e6db4'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#e2e8f0'},ticks:{callback:function(v){return'₹'+v+'L'}}},x:{grid:{display:false}}}}});
+  }
+  if(id==='m-projects'){
+    makeChart('cProjBar',{type:'bar',data:{labels:['CCTV Improvements','Plumbing Repairs','Lift Maintenance'],datasets:[{label:'% Complete',data:[70,100,85],backgroundColor:['#1e4d8c','#27ae60','#e8a020'],borderRadius:4}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,max:100,grid:{color:'#e2e8f0'},ticks:{callback:function(v){return v+'%'}}},y:{grid:{display:false}}}}});
+  }
+}
+</script>
+</body>
+</html>
