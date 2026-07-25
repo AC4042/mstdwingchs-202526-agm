@@ -215,6 +215,179 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
 .cm-section-label{font-size:14px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:1px;margin:18px 0 10px;padding-left:4px}
 .cm-divider{height:1px;background:var(--lt);margin:18px 0}
 /* ── SCROLLABLE SLIDE NAV ── */
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — MOBILE FIRST (max-width:640px)
+   ══════════════════════════════════════════ */
+@media(max-width:640px){
+  /* NAV */
+  .nav-row1{padding:8px 12px;gap:8px;flex-wrap:wrap}
+  .brand{font-size:11px;letter-spacing:1.5px}
+  .arr-btn{padding:6px 12px;font-size:13px}
+  .slide-counter{font-size:12px;min-width:44px}
+  .nav-row2{padding:4px 8px 8px;gap:4px}
+  .snav{padding:5px 9px;font-size:11px}
+
+  /* SLIDE WRAP */
+  .slide-wrap{padding:8px 8px}
+  .slide{border-radius:10px}
+
+  /* TOPBAR */
+  .topbar{padding:6px 12px}
+  .topbar span{font-size:10px;letter-spacing:1px}
+  .topbar small{display:none}
+
+  /* SLIDE BODY */
+  .sbody,.sbody-dark{padding:14px 14px 16px}
+  .stitle,.stitle-w{font-size:15px;margin-bottom:14px;padding-bottom:8px}
+
+  /* TITLE SLIDE */
+  .title-slide{padding:28px 20px;min-height:360px}
+  .title-slide::after,.title-slide::before{width:70px}
+  .title-content div[style*="font-size:38px"]{font-size:26px!important}
+  .title-content div[style*="font-size:74px"]{display:none}
+
+  /* CLOSING SLIDE */
+  .closing-slide{padding:28px 20px;min-height:360px}
+  .closing-slide::after,.closing-slide::before{width:70px}
+  .closing-content div[style*="font-size:42px"]{font-size:28px!important}
+  .closing-slide div[style*="right:22px"]{display:none}
+
+  /* KPI GRIDS → single or 2-col */
+  .kgrid{gap:10px;margin-bottom:14px}
+  .k3,.k4{grid-template-columns:1fr 1fr}
+  .k2{grid-template-columns:1fr 1fr}
+  .kval{font-size:20px}
+  .klbl{font-size:11px}
+  .ksub,.khint{font-size:11px}
+  .kbody{padding:10px 12px}
+
+  /* STEP ROWS */
+  .snum{width:40px;font-size:14px}
+  .srbody{padding:10px 12px}
+  .srtitle{font-size:13px}
+  .srdesc{font-size:12px}
+
+  /* ISSUE GRID → single col */
+  .igrid{grid-template-columns:1fr}
+  .ihead{font-size:13px;padding:10px 12px}
+  .idesc{font-size:12px;padding:10px 12px}
+
+  /* RESOLUTION ROWS */
+  .rrow{flex-wrap:wrap}
+  .rnum{width:100%;height:38px;border-radius:0}
+  .rbody{padding:10px 12px;width:100%}
+  .rtitle{font-size:13px}
+  .rdesc{font-size:11px}
+  .rbadge{padding:6px 12px;width:100%;border-top:.5px solid #2e5090}
+
+  /* PROJECT ROWS */
+  .prow{flex-wrap:wrap;padding:12px 12px;gap:10px}
+  .pinfo{min-width:0;flex:1}
+  .ptitle{font-size:13px}
+  .pdesc{font-size:12px}
+  .pright{margin-left:auto}
+  .ppct{font-size:14px}
+
+  /* INIT CARDS → single col on mobile */
+  .init-grid{grid-template-columns:1fr}
+  .init-top{padding:14px;font-size:32px}
+  .init-title{font-size:14px}
+  .init-desc{font-size:12px}
+
+  /* POLICY GRID → single col */
+  .pgrid{grid-template-columns:1fr;gap:10px}
+  .pcard-title{font-size:13px}
+  .pcard-desc{font-size:12px}
+
+  /* QUOTE BANNER */
+  .quote-banner p{font-size:14px}
+
+  /* BUILDING COMPARE → single col */
+  .bcomp{grid-template-columns:1fr}
+  .bcard-amt{font-size:18px}
+  .bcard-pct{font-size:22px}
+
+  /* MAINTENANCE CHARGES → single col */
+  .maint-grid{grid-template-columns:1fr}
+  .mcard-val{font-size:22px}
+  .delta-box{flex-direction:column;gap:10px;text-align:center}
+  .delta-num{font-size:24px}
+
+  /* COMMITTEE CARDS → 2 col */
+  .cm-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .cm-card{padding:14px 10px}
+  .cm-avatar{width:48px;height:48px;font-size:18px}
+  .cm-name{font-size:13px}
+  .cm-role{font-size:11px}
+  .cm-flat{font-size:12px}
+  .cm-tag{font-size:11px}
+  .cm-section-label{font-size:12px}
+
+  /* EXPENSE CHART + BARS → stack vertically */
+  div[style*="grid-template-columns:1fr 1fr"][style*="gap:18px"]{
+    display:block!important
+  }
+  .ch-wrap{height:220px!important}
+  .exp-name{font-size:13px}
+  .exp-pct{font-size:14px}
+
+  /* INFO ROWS in modals */
+  .info-row{flex-direction:column;align-items:flex-start;gap:3px;padding:8px 0}
+  .iv{font-size:13px}
+  .il{font-size:12px}
+
+  /* MODAL */
+  .modal-host{padding:16px 10px}
+  .modal-box{border-radius:10px;max-width:100%}
+  .modal-hdr{padding:14px 16px}
+  .modal-title{font-size:14px}
+  .modal-body{padding:16px 14px}
+  .snap-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .snap-val{font-size:20px}
+  .snap-lbl{font-size:11px}
+  .mleg{gap:8px;font-size:12px}
+
+  /* CHARGE TABLE */
+  .charge-table{font-size:12px}
+  .charge-table th,.charge-table td{padding:7px 8px}
+
+  /* SMALL INLINE STYLES — override via !important where needed */
+  .fnkey{font-size:13px}
+  .fndesc{font-size:12px}
+  .insight-text{font-size:13px}
+
+  /* Fullwidth bar summary at bottom of bldg+common slide */
+  div[style*="font-size:20px"][style*="font-weight:700"]{font-size:16px!important}
+}
+
+/* ══════════════════════════════════════════
+   TABLET (641px – 900px) — partial override
+   ══════════════════════════════════════════ */
+@media(min-width:641px) and (max-width:900px){
+  .k4{grid-template-columns:repeat(2,1fr)}
+  .init-grid{grid-template-columns:1fr 1fr}
+  .igrid{grid-template-columns:1fr 1fr}
+  .cm-grid{grid-template-columns:repeat(3,1fr)}
+  .slide-wrap{padding:12px 14px}
+  .sbody,.sbody-dark{padding:20px 20px 18px}
+  .stitle,.stitle-w{font-size:17px}
+  .kval{font-size:22px}
+  .ch-wrap{height:240px!important}
+  .title-slide{padding:32px 28px}
+  .closing-slide{padding:32px 28px}
+}
+
+/* ── chart+bar stack on mobile ── */
+@media(max-width:640px){
+  .chart-bar-grid{display:block!important}
+  .chart-bar-grid .ch-wrap{margin-bottom:14px}
+  .comm-banner{flex-direction:column!important;text-align:center;gap:8px!important}
+  /* Force k3 to single col on very small screens */
+  @media(max-width:400px){
+    .k3{grid-template-columns:1fr!important}
+  }
+}
 </style>
 </head>
 <body>
