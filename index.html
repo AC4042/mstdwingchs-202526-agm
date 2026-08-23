@@ -1725,7 +1725,7 @@ function renderSlideCharts(n){
     makeChart('cCommonPie',{type:'pie',data:{labels:PIE_LABELS,datasets:[{data:PIE_DATA,backgroundColor:PIE_COLORS,borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
   }
   if(n===12){
-    makeChart('cMaintBar',{type:'bar',data:{labels:PIE_LABELS,datasets:[{label:'Amount (L)',data:[19.2,19.2,19.2,19.2,19.2],backgroundColor:PIE_COLORS,borderRadius:4}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:'#e2e8f0'},ticks:{callback:function(v){return'₹'+v+'L'}}},y:{grid:{display:false}}}}});
+    makeChart('cMaintBar',{type:'bar',data:{labels:PIE_LABELS,datasets:[{label:'Amount (L)',data:[76.9,27.7,9.6,3.8],backgroundColor:PIE_COLORS,borderRadius:4}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:'#e2e8f0'},ticks:{callback:function(v){return'₹'+v+'L'}}},y:{grid:{display:false}}}}});
   }
   if(n===13){
     makeChart('cBldgBar',{type:'bar',data:{labels:['D Building','Common'],datasets:[{label:'Annual Expense (L)',data:[59.7,46.9],backgroundColor:['#1e4d8c','#2e6db4'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#e2e8f0'},ticks:{callback:function(v){return'₹'+v+'L'}}},x:{grid:{display:false}}}}});
