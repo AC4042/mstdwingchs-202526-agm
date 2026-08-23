@@ -899,12 +899,12 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
     <div class="stitle">Maintenance Expense Breakdown</div>
     <div onclick="openM('m-maint-exp2')" style="cursor:pointer">
       <div class="ch-wrap" style="height:300px"><canvas id="cMaintBar" role="img" aria-label="Horizontal bar chart showing maintenance expense categories with equal distribution">Service, Electricity, Utility, AMC, Other — each 20%.</canvas></div>
-      <div style="text-align:center;font-size:11px;color:var(--mid);margin-top:4px">Click for full breakdown →</div>
     </div>
     <div class="kgrid k3" style="margin-top:14px">
-      <div class="kcard" onclick="openM('m-maint-exp2')"><div class="ktop" style="background:var(--navy)"></div><div class="kbody"><div class="kval" style="color:var(--navy);font-size:20px">₹19.2L</div><div class="klbl">Service</div></div></div>
-      <div class="kcard" onclick="openM('m-maint-exp2')"><div class="ktop" style="background:var(--mid)"></div><div class="kbody"><div class="kval" style="color:var(--mid);font-size:20px">₹19.2L</div><div class="klbl">Electricity</div></div></div>
-      <div class="kcard" onclick="openM('m-maint-exp2')"><div class="ktop" style="background:var(--sky)"></div><div class="kbody"><div class="kval" style="color:var(--sky);font-size:20px">₹19.2L</div><div class="klbl">Utility</div></div></div>
+      <div class="kcard" onclick="openM('m-maint-exp2')"><div class="ktop" style="background:var(--navy)"></div><div class="kbody"><div class="kval" style="color:var(--navy);font-size:20px">₹76,97,200</div><div class="klbl">Service</div></div></div>
+      <div class="kcard" onclick="openM('m-maint-exp2')"><div class="ktop" style="background:var(--mid)"></div><div class="kbody"><div class="kval" style="color:var(--mid);font-size:20px">₹27,78,400</div><div class="klbl">Electricity</div></div></div>
+      <div class="kcard" onclick="openM('m-maint-exp2')"><div class="ktop" style="background:var(--sky)"></div><div class="kbody"><div class="kval" style="color:var(--sky);font-size:20px">₹9,63,600</div><div class="klbl">AMC</div></div></div>
+      <div class="kcard" onclick="openM('m-maint-exp2')"><div class="ktop" style="background:var(--sky)"></div><div class="kbody"><div class="kval" style="color:var(--sky);font-size:20px">₹3,84,000</div><div class="klbl">Other</div></div></div>
     </div>
   </div>
 </div>
@@ -936,12 +936,12 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
         <div style="font-size:13px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px">Current Charges</div>
         <div class="mcard" style="cursor:pointer" onclick="openM('m-charges')">
           <div class="mcard-lbl">Residing Owner — Monthly</div>
-          <div class="mcard-val">₹5,500</div>
+          <div class="mcard-val">₹7,100</div>
           <div class="mcard-sub">Current maintenance</div>
         </div>
         <div class="mcard" style="cursor:pointer" onclick="openM('m-charges')">
           <div class="mcard-lbl">Rented Unit — Monthly</div>
-          <div class="mcard-val">₹5,700</div>
+          <div class="mcard-val">₹7,450</div>
           <div class="mcard-sub">Current maintenance</div>
         </div>
       </div>
@@ -949,32 +949,104 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
         <div style="font-size:13px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px">New Charges</div>
         <div class="mcard" style="cursor:pointer;border:1.5px solid var(--green)" onclick="openM('m-charges')">
           <div class="mcard-lbl">Residing Owner — Monthly</div>
-          <div class="mcard-val" style="color:var(--green)">₹7,100</div>
+          <div class="mcard-val" style="color:var(--green)">₹5,800</div>
           <div class="mcard-sub">Revised maintenance</div>
         </div>
         <div class="mcard" style="cursor:pointer;border:1.5px solid var(--green)" onclick="openM('m-charges')">
           <div class="mcard-lbl">Rented Unit — Monthly</div>
-          <div class="mcard-val" style="color:var(--green)">₹7,400</div>
+          <div class="mcard-val" style="color:var(--green)">₹6,400</div>
           <div class="mcard-sub">Revised maintenance</div>
         </div>
       </div>
     </div>
     <div class="delta-box" style="cursor:pointer" onclick="openM('m-charges')">
       <div>
-        <div style="font-size:13px;color:var(--slate);margin-bottom:3px">Increase per flat</div>
-        <div class="delta-num">₹1,700</div>
-        <div class="delta-pct">22.5% increase</div>
+        <div style="font-size:13px;color:var(--slate);margin-bottom:3px">Decrease per occupied flat</div>
+        <div class="delta-num">₹1,300</div>
+        <div class="delta-pct">18.3% Decrease</div>
+      </div>
+      <div>
+        <div style="font-size:13px;color:var(--slate);margin-bottom:3px">Decrease per let out flat</div>
+        <div class="delta-num">₹1,050</div>
+        <div class="delta-pct">14.1% Decrease</div>
       </div>
       <div style="flex:1">
         <div style="font-size:12px;color:var(--slate);margin-bottom:5px">Fixed Deposit — Healthy Surplus</div>
         <div class="fd-badge">₹37,00,000 in FD</div>
       </div>
     </div>
+    <div style="font-size:13px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px">Next maintenance review: April 2027</div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 13: MAINTENANCE CHARGES ════════════════════════════════════════ -->
+<div class="slide" id="s15">
+  <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
+  <div class="sbody">
+    <div class="stitle">Financial Overview — Maintenance Charges</div>
+    <div class="maint-grid">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:13px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px">Previous Vendors</div>
+        <div class="mcard" style="cursor:pointer" onclick="openM('m-charges')">
+          <div class="mcard-lbl">BVG India Limited</div>
+          <div class="mcard-val">₹2,05,565 Monthly</div>
+          <div class="mcard-sub">Housekeeping</div>
+        </div>
+        <div class="mcard" style="cursor:pointer" onclick="openM('m-charges')">
+          <div class="mcard-lbl">Glenhawk Security Services</div>
+          <div class="mcard-val">₹2,31,450</div>
+          <div class="mcard-sub">Security Service</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:13px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px">New Vendors</div>
+        <div class="mcard" style="cursor:pointer;border:1.5px solid var(--green)" onclick="openM('m-charges')">
+          <div class="mcard-lbl">Kargar Business Services</div>
+          <div class="mcard-val" style="color:var(--green)">₹1,31,000</div>
+          <div class="mcard-sub">Housekeeping</div>
+        </div>
+        <div class="mcard" style="cursor:pointer;border:1.5px solid var(--green)" onclick="openM('m-charges')">
+          <div class="mcard-lbl">Jaguar Security</div>
+          <div class="mcard-val" style="color:var(--green)">₹1,14,000</div>
+          <div class="mcard-sub">Security Service</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:13px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px">New Vendors</div>
+        <div class="mcard" style="cursor:pointer;border:1.5px solid var(--green)" onclick="openM('m-charges')">
+          <div class="mcard-lbl">Kargar Business Services</div>
+          <div class="mcard-val" style="color:var(--green)">₹1,31,000</div>
+          <div class="mcard-sub">Housekeeping</div>
+        </div>
+        <div class="mcard" style="cursor:pointer;border:1.5px solid var(--green)" onclick="openM('m-charges')">
+          <div class="mcard-lbl">Jaguar Security</div>
+          <div class="mcard-val" style="color:var(--green)">₹1,14,000</div>
+          <div class="mcard-sub">Security Service</div>
+        </div>
+      </div>
+    </div>
+    <div class="delta-box" style="cursor:pointer" onclick="openM('m-charges')">
+      <div>
+        <div style="font-size:13px;color:var(--slate);margin-bottom:3px">Decrease per occupied flat</div>
+        <div class="delta-num">₹1,300</div>
+        <div class="delta-pct">18.3% Decrease</div>
+      </div>
+      <div>
+        <div style="font-size:13px;color:var(--slate);margin-bottom:3px">Decrease per let out flat</div>
+        <div class="delta-num">₹1,050</div>
+        <div class="delta-pct">14.1% Decrease</div>
+      </div>
+      <div style="flex:1">
+        <div style="font-size:12px;color:var(--slate);margin-bottom:5px">Fixed Deposit — Healthy Surplus</div>
+        <div class="fd-badge">₹37,00,000 in FD</div>
+      </div>
+    </div>
+    <div style="font-size:13px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px">Next maintenance review: April 2027</div>
   </div>
 </div>
 
 <!-- ══ SLIDE 14: SECURITY STRENGTHENING PLAN ════════════════════════════════ -->
-<div class="slide" id="s15">
+<div class="slide" id="s55">
   <div class="topbar"><span>MST SOCIETY &nbsp;|&nbsp; AGM 2026</span><small>CONFIDENTIAL</small></div>
   <div class="sbody">
     <div class="stitle">Security Strengthening Plan</div>
