@@ -861,28 +861,49 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
   <div class="sbody">
     <div class="stitle">Future Initiatives</div>
     <div class="init-grid">
-      <div class="init-card" onclick="openM('m-initiatives')">
-        <div class="init-top" style="background:var(--blue)">📱</div>
-        <div class="init-body">
-          <div class="init-tag" style="background:var(--lt);color:var(--blue)">FY 2026-27</div>
-          <div class="init-title">Society Mobile App</div>
-          <div class="init-desc">Unified app for complaints, gate passes, maintenance payments, notices, and communication</div>
+      <!-- Issue 1: Visitor Parking -->
+      <div class="icard" onclick="openM('m-issues')" style="display:flex;overflow:hidden;border-radius:10px">
+        <div style="background:var(--red);min-width:6px;border-radius:10px 0 0 10px;flex-shrink:0"></div>
+        <div style="flex:1;overflow:hidden">
+          <div class="ihead" style="background:var(--red)">🅿️ Visitor Parking</div>
+          <div class="idesc" style="padding:14px 18px">
+            Visitor parking bays are frequently misused by residents and unauthorised vehicles. Disputes over parking allocation are increasing, causing inconvenience to genuine visitors and residents alike.
+            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+              <span style="background:#fee2e2;color:var(--red);padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700">Recurring Issue</span>
+              <span style="background:var(--lt);color:var(--navy);padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600">Action Required</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="init-card" onclick="openM('m-initiatives')">
-        <div class="init-top" style="background:var(--navy)">🔒</div>
-        <div class="init-body">
-          <div class="init-tag" style="background:var(--lt);color:var(--blue)">FY 2026-27</div>
-          <div class="init-title">Smart Access Control</div>
-          <div class="init-desc">RFID-based access for vehicles and residents with real-time logs and alerts</div>
+
+      <!-- Issue 2: STP -->
+      <div class="icard" onclick="openM('m-issues')" style="display:flex;overflow:hidden;border-radius:10px">
+        <div style="background:var(--accent);min-width:6px;border-radius:10px 0 0 10px;flex-shrink:0"></div>
+        <div style="flex:1;overflow:hidden">
+          <div class="ihead" style="background:var(--accent)">♻️ STP (Sewage Treatment Plant)</div>
+          <div class="idesc" style="padding:14px 18px">
+            The Sewage Treatment Plant requires attention — maintenance, compliance checks, and operational monitoring need to be regularised. Delays in upkeep can lead to civic penalties and environmental concerns.
+            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+              <span style="background:#fff3cd;color:#92400e;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700">High Priority</span>
+              <span style="background:var(--lt);color:var(--navy);padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600">Compliance Risk</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="init-card" onclick="openM('m-initiatives')">
-        <div class="init-top" style="background:var(--green)">☀️</div>
-        <div class="init-body">
-          <div class="init-tag" style="background:#dcfce7;color:var(--green)">Under Review</div>
-          <div class="init-title">Solar Feasibility Study</div>
-          <div class="init-desc">Rooftop solar installation assessment to reduce common area electricity costs</div>
+
+      <!-- Issue 3: Maintenance Defaulters -->
+      <div class="icard" onclick="openM('m-issues')" style="display:flex;overflow:hidden;border-radius:10px">
+        <div style="background:var(--navy);min-width:6px;border-radius:10px 0 0 10px;flex-shrink:0"></div>
+        <div style="flex:1;overflow:hidden">
+          <div class="ihead" style="background:var(--navy)">💰 Maintenance Defaulters</div>
+          <div class="idesc" style="padding:14px 18px">
+            A significant number of flats have outstanding maintenance dues, impacting the society's ability to fund operations and planned projects. Persistent defaulters will face escalation including legal action as per bye-laws.
+            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+              <span style="background:#fee2e2;color:var(--red);padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700">28 Defaulters</span>
+              <span style="background:#fff3cd;color:#92400e;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700">₹8L+ Pending</span>
+              <span style="background:var(--lt);color:var(--navy);padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600">Legal Action Planned</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
