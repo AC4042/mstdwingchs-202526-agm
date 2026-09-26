@@ -1275,7 +1275,7 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
     <div class="modal-hdr" style="background:var(--green)"><span class="modal-title">💰 Maintenance Collection — Detail</span><button class="mcls" onclick="closeM('m-summary-coll')">×</button></div>
     <div class="modal-body">
       <div class="snap-grid">
-        <div class="snap-item"><div class="snap-val" style="color:var(--accent)">~82%</div><div class="snap-lbl">Collection Rate</div></div>
+        <div class="snap-item"><div class="snap-val" style="color:var(--accent)">~72%</div><div class="snap-lbl">Collection Rate</div></div>
         <div class="snap-item"><div class="snap-val" style="color:var(--red)">~28%</div><div class="snap-lbl">Outstanding</div></div>
         <div class="snap-item"><div class="snap-val" style="color:var(--accent)">160</div><div class="snap-lbl">Total Flats</div></div>
       </div>
@@ -1283,7 +1283,7 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
         <span><span class="mleg-dot" style="background:#27ae60"></span>Collected 72%</span>
         <span><span class="mleg-dot" style="background:#c0392b"></span>Pending 28%</span>
       </div>
-      <div class="ch-wrap" style="height:220px"><canvas id="cColl" role="img" aria-label="Donut chart showing 90% collection vs 10% pending">83% collected, 17% pending.</canvas></div>
+      <div class="ch-wrap" style="height:220px"><canvas id="cColl" role="img" aria-label="Donut chart showing 72% collection vs 28% pending">72% collected, 28% pending.</canvas></div>
       <div style="font-size:13px;color:var(--slate);margin-top:12px">Collection stands at ~72% — is not a healthy rate. The 28% outstanding corresponds to the defaulters</div>
     </div>
   </div>
@@ -1892,7 +1892,7 @@ function renderSlideCharts(n){
 function renderModalChart(id){
   if(rendered['m_'+id])return;rendered['m_'+id]=true;
   if(id==='m-summary-coll'){
-    makeChart('cColl',{type:'doughnut',data:{labels:['Collected','Pending'],datasets:[{data:[90,10],backgroundColor:['#27ae60','#c0392b'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+    makeChart('cColl',{type:'doughnut',data:{labels:['Collected','Pending'],datasets:[{data:[72,28],backgroundColor:['#27ae60','#c0392b'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
   }
   if(id==='m-finance'){
     makeChart('cFinBar',{type:'bar',data:{labels:['Sept','Oct','Nov','Dec','Jan','Feb', 'Mar'],datasets:[{label:'₹ Lakhs',data:[105.4,54.3,73.5,31.9,15,54,5],backgroundColor:['#2a78d6','#2a78d6','#2a78d6','#2a78d6','#2a78d6','#2a78d6','#2a78d6'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#e2e8f0'},ticks:{callback:function(v){return'₹'+v+'L'}}},x:{grid:{display:false}}}}});
