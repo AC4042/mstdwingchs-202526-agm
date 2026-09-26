@@ -634,7 +634,7 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
         <div class="ktop" style="background:var(--accent)"></div>
         <div class="kbody">
           <div style="font-size:22px;margin-bottom:4px">₹</div>
-          <div class="kval" style="color:var(--accent)">~83%</div>
+          <div class="kval" style="color:var(--accent)">~72%</div>
           <div class="klbl">Collection Rate</div>
           <div class="ksub">Maintenance collections off track</div>
           <div class="khint">Click for detail →</div>
@@ -809,9 +809,9 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
   <div class="sbody">
     <div class="stitle">Defaulters &amp; Recovery</div>
     <div class="kgrid k3" style="margin-bottom:16px">
-      <div class="kcard" onclick="openM('m-defaulters')"><div class="ktop" style="background:var(--red)"></div><div class="kbody"><div class="kval" style="color:var(--red)">28</div><div class="klbl">Total Defaulters</div><div class="khint">Click for chart →</div></div></div>
+      <div class="kcard" onclick="openM('m-defaulters')"><div class="ktop" style="background:var(--red)"></div><div class="kbody"><div class="kval" style="color:var(--red)">45</div><div class="klbl">Total Defaulters</div><div class="khint">Click for chart →</div></div></div>
       <div class="kcard" onclick="openM('m-defaulters')"><div class="ktop" style="background:var(--navy)"></div><div class="kbody"><div class="kval" style="color:var(--navy)">12</div><div class="klbl">High-Value (&gt;₹50k)</div><div class="khint">Click for chart →</div></div></div>
-      <div class="kcard" onclick="openM('m-defaulters')"><div class="ktop" style="background:var(--accent)"></div><div class="kbody"><div class="kval" style="color:var(--accent)">₹8L+</div><div class="klbl">Pending Dues Est.</div></div></div>
+      <div class="kcard" onclick="openM('m-defaulters')"><div class="ktop" style="background:var(--accent)"></div><div class="kbody"><div class="kval" style="color:var(--accent)">₹12L+</div><div class="klbl">Pending Dues Est.</div></div></div>
     </div>
     <div class="srow" onclick="openM('m-defaulters')"><div class="snum" style="background:var(--sky)">01</div><div class="srbody"><div class="srtitle">Written Notices</div><div class="srdesc">Formal reminder notices sent to all defaulters</div></div></div>
     <div class="srow" onclick="openM('m-defaulters')"><div class="snum" style="background:var(--accent)">02</div><div class="srbody"><div class="srtitle">Penalty Application</div><div class="srdesc">Late payment penalties applied per society bylaws</div></div></div>
@@ -1274,17 +1274,16 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
     <div class="modal-hdr" style="background:var(--green)"><span class="modal-title">💰 Maintenance Collection — Detail</span><button class="mcls" onclick="closeM('m-summary-coll')">×</button></div>
     <div class="modal-body">
       <div class="snap-grid">
-        <div class="snap-item"><div class="snap-val" style="color:var(--accent)">~83%</div><div class="snap-lbl">Collection Rate</div></div>
-        <div class="snap-item"><div class="snap-val" style="color:var(--red)">~17%</div><div class="snap-lbl">Outstanding</div></div>
-        <div class="snap-item"><div class="snap-val" style="color:var(--navy)">₹34,49,650</div><div class="snap-lbl">Maintenance Income</div></div>
+        <div class="snap-item"><div class="snap-val" style="color:var(--accent)">~82%</div><div class="snap-lbl">Collection Rate</div></div>
+        <div class="snap-item"><div class="snap-val" style="color:var(--red)">~28%</div><div class="snap-lbl">Outstanding</div></div>
         <div class="snap-item"><div class="snap-val" style="color:var(--accent)">160</div><div class="snap-lbl">Total Flats</div></div>
       </div>
       <div class="mleg">
-        <span><span class="mleg-dot" style="background:#27ae60"></span>Collected 83%</span>
-        <span><span class="mleg-dot" style="background:#c0392b"></span>Pending 17%</span>
+        <span><span class="mleg-dot" style="background:#27ae60"></span>Collected 72%</span>
+        <span><span class="mleg-dot" style="background:#c0392b"></span>Pending 28%</span>
       </div>
       <div class="ch-wrap" style="height:220px"><canvas id="cColl" role="img" aria-label="Donut chart showing 90% collection vs 10% pending">83% collected, 17% pending.</canvas></div>
-      <div style="font-size:13px;color:var(--slate);margin-top:12px">Collection stands at ~83% — is not a healthy rate. The 17% outstanding corresponds to the defaulters</div>
+      <div style="font-size:13px;color:var(--slate);margin-top:12px">Collection stands at ~72% — is not a healthy rate. The 28% outstanding corresponds to the defaulters</div>
     </div>
   </div>
 </div>
@@ -1587,13 +1586,13 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
       </div>
       <div class="ch-wrap" style="height:200px"><canvas id="cDefBar" role="img" aria-label="Bar chart of defaulters by due amount category: below 25k, 25k-50k, above 50k">Below ₹25k: 10. ₹25k-50k: 6. Above ₹50k: 12 defaulters.</canvas></div>
       <div style="margin-top:14px">
-        <div class="info-row"><span class="il">Total defaulters</span><span class="iv" style="color:var(--red)">28 flats</span></div>
-        <div class="info-row"><span class="il">High-value (&gt;₹50,000)</span><span class="iv" style="color:var(--navy)">12 flats</span></div>
-        <div class="info-row"><span class="il">Mid-range (₹25k–₹50k)</span><span class="iv">6 flats</span></div>
-        <div class="info-row"><span class="il">Below ₹25,000</span><span class="iv">10 flats</span></div>
-        <div class="info-row"><span class="il">Estimated pending dues</span><span class="iv" style="color:var(--accent)">₹8L+</span></div>
+        <div class="info-row"><span class="il">Total defaulters</span><span class="iv" style="color:var(--red)">45 flats</span></div>
+        <div class="info-row"><span class="il">High-value (&gt;₹50,000)</span><span class="iv" style="color:var(--navy)">14 flats</span></div>
+        <div class="info-row"><span class="il">Mid-range (₹25k–₹50k)</span><span class="iv">4 flats</span></div>
+        <div class="info-row"><span class="il">Below ₹25,000</span><span class="iv">27 flats</span></div>
+        <div class="info-row"><span class="il">Estimated pending dues</span><span class="iv" style="color:var(--accent)">₹12L+</span></div>
       </div>
-      <div class="alert-box" style="background:#fff3cd;font-size:12px;color:var(--navy)">Legal notices will be issued to all 12 high-value defaulters. Resolution R-04 seeks formal committee approval to proceed.</div>
+      <div class="alert-box" style="background:#fff3cd;font-size:12px;color:var(--navy)">Legal notices will be issued to all 14 high-value defaulters. Resolution R-03 seeks formal committee approval to proceed.</div>
     </div>
   </div>
 </div>
