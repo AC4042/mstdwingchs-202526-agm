@@ -810,7 +810,7 @@ h2.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow
     <div class="stitle">Defaulters &amp; Recovery</div>
     <div class="kgrid k3" style="margin-bottom:16px">
       <div class="kcard" onclick="openM('m-defaulters')"><div class="ktop" style="background:var(--red)"></div><div class="kbody"><div class="kval" style="color:var(--red)">45</div><div class="klbl">Total Defaulters</div><div class="khint">Click for chart →</div></div></div>
-      <div class="kcard" onclick="openM('m-defaulters')"><div class="ktop" style="background:var(--navy)"></div><div class="kbody"><div class="kval" style="color:var(--navy)">12</div><div class="klbl">High-Value (&gt;₹50k)</div><div class="khint">Click for chart →</div></div></div>
+      <div class="kcard" onclick="openM('m-defaulters')"><div class="ktop" style="background:var(--navy)"></div><div class="kbody"><div class="kval" style="color:var(--navy)">14</div><div class="klbl">High-Value (&gt;₹50k)</div><div class="khint">Click for chart →</div></div></div>
       <div class="kcard" onclick="openM('m-defaulters')"><div class="ktop" style="background:var(--accent)"></div><div class="kbody"><div class="kval" style="color:var(--accent)">₹12L+</div><div class="klbl">Pending Dues Est.</div></div></div>
     </div>
     <div class="srow" onclick="openM('m-defaulters')"><div class="snum" style="background:var(--sky)">01</div><div class="srbody"><div class="srtitle">Written Notices</div><div class="srdesc">Formal reminder notices sent to all defaulters</div></div></div>
@@ -1913,7 +1913,7 @@ function renderModalChart(id){
     makeChart('cCommonPieM',{type:'pie',data:{labels:PIE_LABELS_2,datasets:[{data:PIE_DATA_2,backgroundColor:PIE_COLORS,borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
   }
   if(id==='m-defaulters'){
-    makeChart('cDefBar',{type:'bar',data:{labels:['Below ₹25k','₹25k–₹50k','Above ₹50k'],datasets:[{label:'Flats',data:[10,6,12],backgroundColor:['#4a90d9','#e8a020','#c0392b'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#e2e8f0'},ticks:{stepSize:2}},x:{grid:{display:false}}}}});
+    makeChart('cDefBar',{type:'bar',data:{labels:['Below ₹25k','₹25k–₹50k','Above ₹50k'],datasets:[{label:'Flats',data:[27,4,14],backgroundColor:['#4a90d9','#e8a020','#c0392b'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#e2e8f0'},ticks:{stepSize:2}},x:{grid:{display:false}}}}});
   }
   if(id==='m-maint-exp2'){
     makeChart('cMaintBarM',{type:'bar',data:{labels:PIE_LABELS,datasets:[{label:'Amount (L)',data:[19.2,19.2,19.2,19.2,19.2],backgroundColor:PIE_COLORS,borderRadius:4}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:'#e2e8f0'},ticks:{callback:function(v){return'₹'+v+'L'}}},y:{grid:{display:false}}}}});
